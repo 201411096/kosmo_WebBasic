@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Javascript 객체지향 </title>
+	<script type="text/javascript">
+		/* 
+			1. 클래스 선언 - 생성자로 초기화하기
+				ㄴ 생성자명은 일반적으로 대문자로 시작하기
+		*/
+		var Student = function(name, kor, eng, math){ // 구조가 똑같기 때문에 변수가 function인지 클래스인지 헷갈리는 경우가 생김 -> 구분하기 위해서 클래스의 경우에는 첫글자를 대문자로 사용하는게 일반적  
+			this.name=name;
+			this.kor=kor;
+			this.eng=eng;
+			this.math=math;
+			
+/* 			this.sum=function(){
+				return kor+eng+math;
+			} */
+		}
+		
+/* 		Student.prototype.sum=function(){
+			return this.kor+this.eng+this.math;
+		}
+		Student.prototype.info=function(){ //인스턴스가 아닌 객체에 함수를 추가함으로서 에러를 해결함
+			return this.name + "님의 평균: " + s1.sum()/3+"<br/>";
+		}; */
+		
+		//두가지 함수를 동시에 정의할 때
+		Student.prototype = { 
+				sum:function(){
+					return this.kor+this.eng+this.math;		
+				},
+				info:function(){
+					return this.name + "님의 평균: " + this.sum()/3+"<br/>";		
+				}};
+		
+		var s1 = new Student('홍길자', 99, 66, 77);
+		document.write(s1.name+"님의 총점: "+s1.sum()+"<br/>");
+		
+		s1.info=function(){
+			return this.name + "님의 평균: " + s1.sum()/3+"<br/>";
+		};
+
+		document.write(s1.info());
+		
+		var s2 = new Student('홍길숙', 79, 56, 57);
+		document.write(s2.name+"님의 총점: "+s2.sum()+"<br/>");
+		
+		document.write(s2.info()); //에러 발생 s2의 객체에 함수가 추가된 것이 아니라 s1의 인스턴스에 함수가 추가된 것이기 때문에 안 되는듯
+  		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

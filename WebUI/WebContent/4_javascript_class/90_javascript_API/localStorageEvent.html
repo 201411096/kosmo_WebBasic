@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>StorageEvent Example</title>
+	<script type="text/javascript">
+		var item;
+		var count;
+		/* ***** sessionStorage에서는 정상작동하지 않음 ***** */
+		window.onload=function(){ //window.onload 시작
+			item=document.getElementById('item');
+			count=document.getElementById('count');
+			window.onstorage=storageEventListener;
+			document.getElementById('save').onclick=store;
+			document.getElementById('retrieve').onclick=retrieve;
+
+		} //window.onload 끝
+		function storageEventListener(e){
+			var eventDetail = "key:\t\t\t" + e.key + " \n" +
+						"oldValue:\t\t" + e.oldValue + " \n" +
+						"newValue:\t\t" + e.oldValue + " \n" +
+						"storageArea:\t" + e.storageArea + " \n"+
+						"url:\t\t\t" + e.url;
+			document.getElementById('textarea').innerHTML = eventDetail;
+			console.log("check onstorage event");
+			alert('c');
+		}
+		function store(){
+			if(!window.localStorage){
+				alert('localStorage 지원하지 않습니다.');
+				return;
+			}
+			localStorage.setItem(item.value, count.value);
+		}
+		function retrieve(){ //retrieve : 검색하다
+			if(!window.localStorage){
+				alert('localStorage 지원하지 않습니다.');
+				return;
+			}
+			var val = localStorage.getItem(item.value);
+			if(val==null)
+				alert(item.value + "는 구입 리스트에 없습니다.");
+			else
+				count.value=val;
+		}
+
+	</script>
+</head>
+<body>
+	품목명 : <input id="item" type="text" size="10">
+	개수 : <input id="count" type="text" size="10">
+	<button id="save">저장</button>
+	<button id="retrieve">검색</button>
+	<textarea id="textarea" cols="60" rows="6"></textarea>
+</body>
+</html>

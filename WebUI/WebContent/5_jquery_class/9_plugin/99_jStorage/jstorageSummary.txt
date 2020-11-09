@@ -1,0 +1,41 @@
+References
+	い https://github.com/andris9/jStorage
+--------------------------------------------------------------------------------
+set(key, value[, options])
+	い $.jStorage.set(key, value, options)
+get(key[, default])
+	い value = $.jStorage.get(key)
+	い value = $.jStorage.get(key, "default value")
+deleteKey(key)
+	い $.jStorage.deleteKey(key)
+setTTL(key, ttl)
+	い $.jStorage.set("mykey", "keyvalue");
+	い $.jStorage.setTTL("mykey", 3000); // expires in 3 seconds
+getTTL(key)
+	い ttl = $.jStorage.getTTL("mykey"); // TTL in milliseconds or 0
+flush()
+	い $.jStorage.flush()
+index()
+	い $.jStorage.index()
+		い var index = $.jStorage.index();
+		い console.log(index); // ["key1","key2","key3"]
+storageSize()
+	い $.jStorage.storageSize()
+storageAvailable()
+	い $.jStorage.storageAvailable()
+currentBackend()
+	い $.jStorage.currentBackend()
+reInit()
+	い $.jStorage.reInit()
+subscribe(channel, callback)
+	い $.jStorage.subscribe("ch1", function(channel, payload){
+	     console.log(payload+ " from " + channel);
+	});
+publish(channel, payload)
+	い $.jStorage.publish("ch1", "data");
+listenKeyChange(key, callback)
+	い $.jStorage.listenKeyChange("mykey", function(key, action){
+  	    console.log(key + " has been " + action);
+	});
+stopListening(key[, callback])
+	い $.jStorage.stopListening("mykey"); // cancel all listeners for "mykey" change

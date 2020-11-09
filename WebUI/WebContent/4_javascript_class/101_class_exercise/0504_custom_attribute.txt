@@ -1,0 +1,10 @@
+html 사용 예시
+	ㄴ 	<td class="first item" price="1000">커피</td>
+------------------------------------------------------------
+js 사용 예시
+	ㄴ	var price = this.getAttribute('price');
+------------------------------------------------------------
+- elem.hasAttribute(name) — 속성의 존재 확인.
+- elem.getAttribute(name) — 속성값을 가져옴.
+- elem.setAttribute(name, value) — 속성값을 변경함.
+- elem.removeAttribute(name) — 속성값을 제거함.

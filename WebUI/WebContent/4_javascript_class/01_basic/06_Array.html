@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> Array 객체 </title>
+<script type="text/javascript">		
+
+// 1. 배열의 함수 확인
+
+	var arr = ['김태희','송혜교','전지현','김고은','임수정'];
+	document.writeln( arr + '<br/>');
+	document.writeln( arr.join('/') + '<br/>');
+	document.writeln( arr.slice(3) + '<br/>');
+	document.writeln( arr.slice(1,3) + '<br/>'); // 1번쨰 인덱스부터 3번쨰 앞에 인덱스까지 나옴 (1-2) --substring과 비슷하게 작동 
+
+	document.writeln(arr.reverse() + "<br/>"); //배열의 요소가 거꾸로 나옴 (내림차순으로 정렬되는게 아닌듯)
+	document.writeln(arr.sort() + "<br/>"); //배열의 요소가 정렬됨
+
+	//주의 사항 sort()가 문자열로 변환후에 정렬
+	var arr2 = [5, 15, 20, 9];
+	document.writeln(arr2.sort() + '<br/>');	//5, 9, 15, 20 순으로 나오지 않음
+
+	//오름차순 내림차순 예시----------------------------------------
+	//Sort numbers in an array in ascending order <오름차순>
+	var points = [40, 100, 1, 5, 25, 10];
+	points.sort(function(a, b){return a-b});
+	document.writeln(points + "<br/>");
+	//Sort numbers in an array in descending order <내림차순>
+	var points = [40, 100, 1, 5, 25, 10];
+	points.sort(function(a, b){return b-a});
+	document.writeln(points + "<br/>");
+
+	var arrTemp = ['강동원', '박서준'];
+	document.writeln(arr.concat(arrTemp) + '<br/>'); //이렇게 사용시 arr원래 배열은 변경되지 않음
+	document.writeln(arr+ '<br/>');
+	//arr = arr.concat(arrTemp);						 //대입을 해야 arr의 원래 배열에 붙어서 적용이 됨
+	document.writeln(arr+ '<br/>');
+	
+	// 2. 배열을 스택과 큐로 이용하기
+	document.writeln("<hr/>");
+ 	var data = [];
+	data.push('박서준');
+	data.push('현빈');
+	data.push('박보검');
+	document.writeln( data.pop() + "<br/>");
+	document.writeln( data.pop() + "<br/>");
+	document.writeln( data.pop() + "<br/>");
+	document.writeln( data.pop() + "<hr/>");
+	
+	var data2 = [];
+	data2.push('박소담');
+	data2.push('김고은');
+	data2.push('이지은');
+	document.writeln( data2.shift() + "<br/>");
+	document.writeln( data2.shift() + "<br/>");
+	document.writeln( data2.shift() + "<br/>");
+	document.writeln( data2.shift() + "<hr/>");	 
+	
+	/* 3. es6
+	start end는 java의 substring처럼 사용
+	copyWithin(target, start, end )
+	fill(content, start, end)
+	*/
+
+	document.writeln(arr + "<br/>"); // 김고은,김태희,송혜교,임수정,전지현
+	document.writeln(arr.copyWithin(1,3,5) + "<br/>" );	//김고은,임수정,전지현,임수정,전지현
+	document.writeln(arr.fill('박소담', 1, 3) + "<br/>" );	//김고은,박소담,박소담,임수정,전지현
+
+	//-------------------------------------------- 나중에 함수부붙에서 하자
+	// 4. 콜백함수
+	// (1) forEach 메소드 :  배열의 내용을 순서대로 처리
+	//			array.forEach(function(요소의값, 인덱스번호, 원래의배열){})
+
+	
+	// (2) map 메소드 : 배열을 지정된 규칙으로 가공하기
+
+	
+	
+	// (3) some 메소드 : 배열에 조건이 일치하는 요소가 있는지 확인
+	//     every 메소드 : 배열에 조건이 모든 요소에 일치하는지 확인
+	/* 	var data3 = [1, 3, 5, 7, 9];
+		var result = data3.some(function(value, index, array){
+			return value%3===0;
+		});
+		if (result){
+			document.writeln( " 3의 배수가 발견 <br/>");
+		}else{
+			document.writeln( " 3의 배수가 없음 <br/>");
+		}
+		var data3 = [3, 6, 9, 30];
+		var result = data3.every(function(value, index, array){	
+			return value%3===0;
+		});
+		if (result){
+			document.writeln( " 모든 요소가 3의 배수 <br/>");
+		}else{
+			document.writeln( " 모든 요소는 3의 배수가 아님 <br/>");
+		} */
+
+	// (4) filter 메소드 : 배열의 내용을 특정의 조건으로 필터링	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

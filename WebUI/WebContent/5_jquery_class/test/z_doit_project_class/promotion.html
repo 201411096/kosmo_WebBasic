@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>광고페이지</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#closeWin').on('click', function (){
+				if( $('input[type=checkbox]').is(":checked") ){	//input에 타입이 checkbox인 요소가 check되어 있는지
+					$.cookie('Promotion', 'no', {expires : 1});
+				}
+				window.close();
+			});
+		});
+	</script>
+</head>
+<body>
+	<img src="images/bestbook_list_4.png" alt="" />
+	<img src="images/bestbook_list_5.png" alt="" />
+	<br/>
+	이 페이지를 오늘 하루 열지 않겠습니다.
+	<input type="checkbox">
+	<input type='button' id='closeWin' name='closeWin' value='닫기'/>
+</body>
+</html>

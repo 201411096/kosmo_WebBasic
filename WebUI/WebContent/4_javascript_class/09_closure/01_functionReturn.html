@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//-------------------------------------------------------------------------
+//  즉시 실행 함수
+//	 - 함수를 변수에 직접 할당하는 것이 아니라 함수의 결과물을 할당하기 위해 즉시 실행 함수를 사용(?)
+//	- 추후에 클로져와 관련
+
+/*
+	함수
+		ㄴ 변수로 사용이 가능
+		ㄴ 선언되자마자 사용이 가능
+		ㄴ 리턴 가능
+*/
+
+/*
+var f = function(num){
+	document.write('num='+num+'<br/>');
+}
+var func = f(10);
+*/
+
+var func = function(num){
+	document.write('num='+num+'<br/>');
+}(10); //f(10); //함수를 선언하자마자 실행
+
+/*
+var byensu = function(num){
+
+	var func = function(num){
+		--num;
+		document.write('num='+num+'<br/>');
+	};
+
+	return func;
+}(10);
+*/
+
+var byensu = function(num){
+	return function(){
+		--num;
+		document.write('num='+num+'<br/>');
+	};
+;
+}(10);
+document.write(byensu + '<br/>');
+document.write(typeof byensu + '<br/>');
+
+
+// 지역변수를 공유하는 효과를 얻을 수 있음..?
+byensu(); //num=9;
+byensu(); //num=8;
+byensu(); //num=7;
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

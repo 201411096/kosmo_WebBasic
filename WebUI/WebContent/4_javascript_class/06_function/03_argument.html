@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> 03_argument.html </title>
+	<script type="text/javascript">
+
+/*
+	//@함수의 인자는 갯수를 체크하지 않는다.
+	function mul(first, second){
+		return first*second;
+	}
+	document.write('곱은 ' + mul(3,4) + "</br>");
+	document.write('곱은 ' + mul(3,4,5) + "</br>");	//인자개수가 다르게 들어가도 정상적으로 실행이 되는 것처럼 보임
+	document.write('곱은 ' + mul(3) + "</br>"); //인자 개수가 부족하게 들어갈 경우 입력되지 않은 값들이 undefined으로 들어감
+*/
+
+/*
+	function mul( args ){
+		return args.first*args.second;
+	}
+	var obj = {first:3, second:4};
+	document.write('곱은 ' + mul(obj) + "<br/>");
+*/
+	
+/*
+	//특별 객체 : arguments
+	function func(){
+		document.write(arguments + "<br/>");
+		console.log(arguments);
+	}
+	func(100, 200);
+*/
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

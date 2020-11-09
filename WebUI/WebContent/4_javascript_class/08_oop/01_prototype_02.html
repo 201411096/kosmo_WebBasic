@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Javascript 객체지향 </title>
+	<script type="text/javascript">
+		function Person() {
+		  this.eyes = 2;
+		  this.nose = 1;
+		}
+		var kim  = new Person();
+		var park = new Person();
+		console.log(kim.eyes);  // => 2
+		console.log(kim.nose);  // => 1
+		console.log(park.eyes); // => 2
+		console.log(park.nose); // => 1
+		/* 위의 경우에 수백명의 사람 객체가 있을 경우 전부 동일한 값을 저장하고 있는 상황이 발생할 수 있음*/
+		/* 위에서 공통적으로 가지고 있는 부분들을 prototype으로 묶어줄 수 있음*/
+
+		Person.prototype.eyes = 2;
+		Person.prototype.nose = 1;
+		var kim  = new Person();
+		var park = new Person():
+		console.log(kim.eyes); // => 2
+  		/* 프로토타입에는 Prototype Link 와 Prototype Object가 존재 */
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿----------------------------------------
+Servlet LifeCycle
+	ㄴ init() -> service() -> destroy()
+----------------------------------------
+Servlet service의 종류
+	ㄴ doGet()
+	ㄴ doPost()
+	ㄴ doPut()
+	ㄴ doDelete()
+	ㄴ doHead()
+----------------------------------------
+web.xml 설정
+	ㄴ 1. WEB_INF -> web.xml에서 설정
+	ㄴ 설정 예시 : <servlet>
+			  	<servlet-name>HelloServlet</servlet-name> <!-- 보통 서블릿 파일의 이름과 같이 작성함 <A>  -->
+			  	<servlet-class>HelloServlet</servlet-class>	<!-- 서블릿 파일의 이름  -->
+			   </servlet>
+			   <servlet-mapping>
+			  	<servlet-name>HelloServlet</servlet-name> <!-- <A>와 같은 이름으로 줘야 함  -->
+			  	<url-pattern>/HelloServlet</url-pattern>
+			   </servlet-mapping>
+	ㄴ 2. annotation(어노테이션 매핑)
+	
+----------------------------------------
+request.getAttribute
+	ㄴ 서버쪽에서 저장한 값을 받아올 때(request.setAttribute한 값을 받아올 때)
+	ㄴ request.getParameter 와의 차이점
+		ㄴ request.getParameter는 사용자가 준 데이터를 받을 때(ex) queryString)

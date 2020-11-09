@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var radio = document.getElementsByName("radio1");
+			for(var i=0; i<radio.length; i++){
+				radio[i].onclick=function(){
+					opener.document.getElementById("text1").value=this.value;
+				}
+			}
+		}
+	</script>
+</head>
+<body bgcolor="#ddddff">
+	<form id="form1">
+		<input type="text" name="text1" id="text1"><br/>
+
+		<input type="radio" name="radio1" value="가산">가산<br/>
+		<input type="radio" name="radio1" value="판교">판교<br/>
+		<input type="radio" name="radio1" value="부평">부평<br/>
+
+	</form>	
+</body>
+</html>

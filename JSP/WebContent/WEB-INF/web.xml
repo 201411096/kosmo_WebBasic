@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>JSP</display-name>
+  
+  <welcome-file-list> <!-- 첫번째 페이지 지정  -->
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>HelloServlet</servlet-name> <!-- 보통 서블릿 파일의 이름과 같이 작성함 <A>  -->
+  	<servlet-class>HelloServlet</servlet-class>	<!-- 서블릿 파일의 이름  -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>HelloServlet</servlet-name> <!-- A와 같은 이름으로 줘야 함  -->
+  	<url-pattern>/HelloServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SimpleControl</servlet-name> <!-- 보통 서블릿 파일의 이름과 같이 작성함 <A>  -->
+  	<servlet-class>mvc.simple.SimpleControl</servlet-class>	<!-- 서블릿 파일의 이름  -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SimpleControl</servlet-name> <!-- A와 같은 이름으로 줘야 함  -->
+  	<url-pattern>/SimpleControl</url-pattern>
+  	<url-pattern>/sc</url-pattern>
+  	<url-pattern>*.kys</url-pattern>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>GuestControl</servlet-name> <!-- 보통 서블릿 파일의 이름과 같이 작성함 <A>  -->
+  	<servlet-class>mvc.guest.control.GuestControl</servlet-class>	<!-- 서블릿 파일의 이름  -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GuestControl</servlet-name> <!-- A와 같은 이름으로 줘야 함  -->
+  	<url-pattern>/GuestControl</url-pattern>
+  	<url-pattern>/guest</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>BoardControl</servlet-name> <!-- 보통 서블릿 파일의 이름과 같이 작성함 <A>  -->
+  	<servlet-class>mvc.board.control.BoardControl</servlet-class>	<!-- 서블릿 파일의 이름  -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BoardControl</servlet-name> <!-- A와 같은 이름으로 줘야 함  -->
+  	<url-pattern>/BoardControl</url-pattern>
+  	<url-pattern>/board</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BoardMyBatisControl</servlet-name>
+  	<servlet-class>mvc.board_mybatis.control.BoardControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BoardMyBatisControl</servlet-name>
+  	<url-pattern>/BoardMyBatisControl</url-pattern>
+  </servlet-mapping>  
+  
+</web-app>

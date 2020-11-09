@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var child =  window.open("ex3_window_opened.html", "", "width=600, height=500");
+			document.getElementById("select1").onchange=function(){
+				// alert("");
+				// child.form1.text1.value=document.getElementById("select1").value; 
+				child.document.getElementById("text1").value = document.getElementById("select1").value;  //frm을 사용할떄는 name으로 사용
+			}
+
+		}
+	</script>
+</head>
+<body bgcolor="#ddddff">	
+	<form id="frm">
+		<select name="select1" id="select1">
+			<option value ="도시선택">도시선택</option>
+			<option value ="서울시">서울시</option>
+			<option value ="인천시">인천시</option>
+		</select>
+		<br>
+		<input type="text" id="text1">
+	</form>
+</body>
+</html>

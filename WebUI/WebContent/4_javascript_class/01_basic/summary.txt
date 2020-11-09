@@ -1,0 +1,42 @@
+
+JavaScript = ECMAscript + DOM(Document Object Model)
+						+ BOM(Browser Object Model)
+						
+DOM : 단순 문자들을 메모리에 띄운것
+
+최근 자바스크립트 버전 es5 / es+6
+
+* 자바스크립트의 변천(2010)
+							2010이전				2010이후
+ㄴ presentation(화면)			html, css, js		html, css, js
+ㄴ application(구현)			asp, jsp, php		node.js(웹서버 기능을 하는 자바스크립트)
+ㄴ database(데이터베이스)		oracle,mysql		mongodb
+
+* 참고사이트
+1. MDN web docs
+https://developer.mozilla.org/ko/
+2. w3schools
+https://www.w3schools.com/
+
+*디버깅 - 크롬 확장프로그램
+ㄴ JavaScript Errors Notifier
+
+
+--------------------------------------------------------------------------------------------
+1. 일반적으로 외부스크립트를 내부스크립트보다 먼저 기술한다.
+
+2. 스크립트코드를 주석으로 감싸고 있는 이유는 처리되지 않는 브라우저에서 주석으로 처리하기 위함
+
+3. 변수 선언	-	var	ㅡ let(변수)
+					ㄴ const(상수)
+
+4. 데이터형
+	4_1.기본형	- 수치형
+				- 문자열
+				- 논리형
+				- 특수형(null/undefined *)
+	4_2.참조형	- 배열
+				- 객체
+				- 함수(***** 헷갈리기 쉬움)
+	
+			

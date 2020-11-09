@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 새로운 for 문장 </title>
+<script type="text/javascript">
+
+// 1. for...in :  요소를 순서대로 처리하기
+    var  arr = ['송혜교', '김태희', '전지현' ];
+
+    for(var i=0; i<arr.length; i++){
+        document.write(arr[i] + "<br/>");
+    }
+    /* java와 달리 ':' 대신에 'in' 사용 */
+    /* java와 달리 index가 튀어나옴 */
+    for(var arrvar in arr){     
+        document.write(arr[arrvar] + "<br/>");
+    }
+    /* var i에 key들이 순서대로 저장이 됨 */
+    /* 객체를 배열처럼 접근이 가능 ex)obj['first'] */
+    /* 객체는 key value로 구성 */
+    var obj = {first : '길동', last : '홍', age : 30, height: 150.99};
+    for(var i in obj){
+        document.write(i +":"+ obj[i] + "<br/>");
+    }
+    /* 객체 접근시에도 '' ""를 가리지 않음 */
+    document.write("객체 접근 확인 " + obj['first'] + "<br/>");
+    document.write("객체 접근 확인 " + obj["first"] + "<br/>");
+    document.write("객체 접근 확인 " + obj.first + "<br/>");
+    
+//----------------------------------------------------
+// 2. for...of  (es6) : 열거형의 요소를 순서대로 처리하기
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

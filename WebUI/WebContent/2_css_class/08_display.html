@@ -1,0 +1,47 @@
+<!-- 
+	display:block			:		 항상 새라인에서 시작하고 옆에 다른 요소 배치 안됨
+											width, height, padding, margin, border 조절 가능
+	display:inline		:		 새라인에서 시작 못하고 옆에 다른 요소와 배치 가능
+											width, height, padding, margin, border 조절 불가능
+	display:inline-block : 	새라인에서 시작 못하고 옆에 다른 요소와 배치 가능
+											width, height, padding, margin, border 조절 가능
+							* inline으로 사용하면서 padding margin을 사용하기 위함
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> 박스의 유형 제어 - display </title>
+	<style type="text/css">
+		div div {
+			margin: 20px;
+			padding: 30px;
+			display: inline-block;
+		}
+		/* 화면에서 spade3카드가 안 보이게  */
+/* 		div>div:nth-of-type(2){ */
+/* 			display: none; */
+/* 		} */
+
+		/* display: none -> 화면에서 안 보이면서 공간도 차지하지 않음  */
+/* 		div>div:nth-child(2){ */
+/* 			display:none; */
+/* 		} */
+
+		/* visibility: hidden -> 화면에서 보이지는 않지만 공간은 그대로 차지함  */
+		div>div:nth-child(2){
+			visibility: hidden;
+		}
+		
+	</style>
+
+</head>
+<body>
+	<hr/>
+	<div style="background : orange">
+		<div><img src='./img/spade-2.png'  width='200px' height='300px'/></div>
+		<div><img src='./img/spade-3.png'  width='200px' height='300px'/></div>
+		<div><img src='./img/spade-7.png'  width='200px' height='300px'/></div>
+	</div>
+</body>
+</html>

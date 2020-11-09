@@ -1,0 +1,79 @@
+----------------------------------------------------------------------------------------------------
+spring ssl 설정
+	ㄴ keytool -genkey -alias [ keystore 별칭 ] -keyalg RSA -keystore [ key file 이름 ]
+	ㄴ Tomcat 9.0\conf 의 server.xml 수정
+		<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+		            maxThreads="150" SSLEnabled="true" keystoreFile="키스토어 경로" 
+		        keystorePass="키스토어 비번" scheme="https" secure="true"  clientAuth="false" sslProtocol="TLS"  />
+ 	ㄴ 스프링 시큐리티 설정(pom.xml)
+	        <dependency>
+	            <groupId>org.springframework.security</groupId>
+	            <artifactId>spring-security-web</artifactId>
+	            <version>3.2.8.RELEASE</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.springframework.security</groupId>
+	            <artifactId>spring-security-config</artifactId>
+	            <version>3.2.8.RELEASE</version>
+	        </dependency>
+	ㄴ webapp\spring 아래에 security-context.xml 작성
+		<?xml version="1.0" encoding="UTF-8"?>
+		<beans:beans
+			xmlns="http://www.springframework.org/schema/security"
+			xmlns:beans="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+				http://www.springframework.org/schema/security
+				http://www.springframework.org/schema/security/spring-security-3.2.xsd">  
+		<http auto-config='true' use-expressions="true"> 
+			<intercept-url pattern="/" requires-channel="https" access="permitAll" /> 
+			<!-- enable csrf protection 이거 바로 아랫줄도 주석 처리 필요 -->
+			<csrf /> 
+		</http>  
+			<authentication-manager>
+				<!-- <authentication-provider>
+					<user-service>
+						<user name="master" password="kim1234" authorities="ROLE_USER" />
+					</user-service>
+				</authentication-provider> -->
+			</authentication-manager>
+		</beans:beans>
+	ㄴ web.xml 필터 추가 + context-param의 context-value 경로 추가해야됨(security-context.xml)
+		   <filter> 
+		        <filter-name>springSecurityFilterChain</filter-name> 
+		        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		    </filter> 
+		    <filter-mapping> 
+		        <filter-name>springSecurityFilterChain</filter-name> 
+		        <url-pattern>/*</url-pattern> 
+		    </filter-mapping>  
+		    <security-constraint> 
+		        <web-resource-collection>
+		            <web-resource-name>my-secure-app</web-resource-name>
+		            <url-pattern>/*</url-pattern>
+		        </web-resource-collection>
+		        <user-data-constraint>
+		            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		        </user-data-constraint>
+		    </security-constraint>
+----------------------------------------------------------------------------------------------------
+keytool의 jks 파일에서 pkcs12 형태로 키 추출, cert, key 파일 추출
+
+사용방법
+$ keytool -importkeystore -srckeystore "jks파일명" -destkeystore "파일명".p12 -deststoretype PKCS12
+$ openssl pkcs12 -in "위에서 추출한 파일명".p12 -out "cert파일명".pem -clcerts -nokeys
+$ openssl pkcs12 -in "위에서 추출한 파일명".p12 -out "key파일명".pem -nocerts -des
+
+사용예시
+keytool -importkeystore -srckeystore petcommunity -destkeystore petcommunity.p12 -deststoretype PKCS12
+openssl pkcs12 -in petcommunity.p12 -out petcommunity_cert.pem -clcerts -nokeys
+openssl pkcs12 -in petcommunity.p12 -out petcommunity_key.pem -nocerts -des
+----------------------------------------------------------------------------------------------------
+jks to pfx
+
+사용방법
+keytool -importkeystore -srckeystore SecureSign.jks -srcstoretype JKS -srcstorepass "password" -destkeystore SecureSign.pfx -deststoretype PKCS12 -deststorepass "password"
+
+사용예시
+keytool -importkeystore -srckeystore petcommunity -srcstoretype JKS -srcstorepass 123456 -destkeystore petcommunity.pfx -deststoretype PKCS12 -deststorepass 123456

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var radio = document.getElementsByName('site');
+			for(var i=0; i<radio.length; i++){
+				radio[i].onclick=function(){
+//					document.getElementById('ifrm').src=this.value;
+					document.getElementsByName('ifrm')[0].src=this.value; //name사용시 배열로 받아오는 듯
+					console.log(document.getElementsByName('ifrm').length);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name='fm'>
+	<input type='radio' name='site' value='http://www.naver.com'>네이버
+	<input type='radio' name='site' value='http://www.daum.net'>다음
+	<input type='radio' name='site' value='http://www.nate.com'>네이트
+	<br>
+	<iframe name='ifrm' width="420" height="315" src="" id='ifrm'>
+	</iframe>
+	</form>
+</body>
+</html>

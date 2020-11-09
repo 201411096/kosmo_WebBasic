@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트의 자료형</title>
+<script type="text/javascript">
+
+/*
+    기본적으로 ''과 ""을 구분하지 않지만 ''과 ""이 중첩되서 사용될경우 서로 교대로 사용해주어야 에러가 발생하지 않음
+    "...'...'..."
+*/
+    /* document.write와 document.writeln은 pre태그 안에서만 적용이 된다. */
+    
+/* 1. 자바스크립트는 데이터타입에 관대하다
+     변수를 선언할 때 데이타타입을 정하지 않는다
+		(1) 변수 선언 : var
+*/
+var var1 = "문자열";
+document.writeln("변수의 값: " + var1);	 /* 개행을 하려면 추가적으로 br태그를 붙여야함  */
+/* document.write("변수의 값: " + str1); */
+console.log("변수의 값:" + var1 + "<br/>"); /* 개발자 도구 console에서 확인이 가능  */
+console.log("변수의 값의 type: " + typeof var1 );
+
+var1=1000;
+console.log("변수의 값: " + var1);
+console.log("변수의 값의 type: " + typeof var1 ); /* 대입되는 값에 따라서 자동으로 type이 바뀜  */
+
+/*   (2) let  (es6)
+ 		- 변수의 중복을 허용하지 않는다
+ 		- 블럭 범위(scope)를 인식한다 -> 나중에 확인
+ */
+var var1 = "변수";
+document.write("변수의 값:" + var1 + "<br/>");
+
+let msg = "기존";
+/* let msg = "변경";	 */	//let의 경우 기존에 선언된 변수 이름을 다시 사용할경우 에러가 발생함
+msg = "변경";
+document.writeln("msg: " + msg + "<br/>")
+ /* (3) const : 상수선언 (es6)
+	- 값을 재대입 금지
+	- 명명 권장 : 모두 대문자에 단어사이는 _로 표시
+*/
+/* var PI = 3.14;
+PI = 0.14;
+document.writeln("원주율: " + PI + "<br/>"); */
+const PI = 3.14;
+/* PI = 0.14;*/ /* 이렇게 사용할 경우 아래부분이 나오지를 않음  */
+document.writeln("원주율: " + PI + "<br/>");
+ 
+//----------------------------------------------------------------
+// 2. 리터럴 - 변수의 값
+/*
+	var m = "안녕하세요";
+	var n = 10000;
+	배열의 리터럴 : 요소(element)
+	객체의 리터럴 : 프러퍼티(property)
+ */
+
+var   arr = [ '안녕', 'Hello', 'Hola', '곤니찌와' ];
+document.writeln(arr[2] + "<br/>");
+ 		
+var   arr2 = [ '안녕', [ 'Hello', 'Hola' ], '곤니찌와' ];
+document.writeln(arr2[1][1] + "<br/>");
+
+var  obj = { x : '안녕',  y : 'Hello' ,  z : '곤니찌와' };
+document.writeln(obj.y + "<br/>");
+document.writeln(obj['y'] + "<br/>");
+document.writeln(obj["y"] + "<br/>");
+
+var x;
+document.writeln(x + "<br/>");
+document.writeln(obj.a + "<br/>");
+//-------------------------------------------------------
+/* 3. 분할 대입 (destructuring assignment) : (es6)
+ 			- 배열과 객체의 요소를 분할하는 부분
+ 		(1) 배열 분할
+ */
+ var data = [10, 20, 30, 40, 50];
+ var a0 = data[0];
+ var a1 = data[1];
+ var a2 = data[2];
+ document.writeln(a0+ a1+ a2 + "<br/>");  
+ console.log(a0, a1, a2 );
+ 
+ var [a, b, c, d, e] = data;
+ document.writeln(a + "<br/>");
+ document.writeln(e + "<br/>");
+ 
+ var [x, y, ...etc]=data;		/* ...etc 부분이 etc로 나머지 값들이 들어감  */
+ document.writeln(x + "<br/>");
+ document.writeln(y + "<br/>");
+ document.writeln(etc + "<br/>");
+ 
+ var v1=100, v2=200;
+ [v2, v1] = [v1, v2];			/* swap */
+ document.writeln(v1 + "<br/>");
+ document.writeln(v2 + "<br/>");
+ 
+ /*  (2) 객체 분할
+  */
+ /* 객체를 중괄호마다 구분하는듯   */
+ var book = {title: "자바책", publisher:"우리출", price:200};
+ 
+ /* var {title, price} = book; */
+ var {title, price=300} = book;
+ document.writeln(title + "<br/>");
+ document.writeln(price + "<br/>");
+
+ /* 객체 배열 선언시에  */
+ var personArr = [{name:'홍길동', age:29}, {name:'손흥민', age:33}];
+ document.writeln(personArr[0].name + "<br/>");
+ document.writeln(personArr[1].age + "<br/>");
+ document.writeln(personArr.length + "<br/>");
+</script>
+</head>
+<body>
+
+</body>
+</html>

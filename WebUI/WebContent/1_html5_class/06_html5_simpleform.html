@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action='' method='post'>		<!-- url에 보이는 기본 방식->get url에 보이지 않는 방식 post -->
+	<fieldset>	<!--html5에만 있음-->
+		<legend>회원 가입</legend> <!-- 테두리에 섞여있음 -->
+		<ol>
+			<li>
+				<label for='name'>이름</label><input id='name' name='name' type="text/"> <!-- id는 프론트엔드에서, name은 서버에서 -->
+			</li>
+			
+			<li>
+				<label for='gender'>성별</label>
+				<input id='gender' name='gender' type='radio' value='남자' checked='checked'>남자
+				<input id='gender' name='gender' type='radio' value='여자'>여자
+			</li>
+
+
+			<li>
+				<label for='lover'>애인</label>
+				<input id='lover' name='lover' type='radio' value='있다' checked='checked'>있다
+				<input id='lover' name='lover' type='radio' value='없다'>없다.
+			</li>
+			<li>
+				<input type='submit' value='서버에 전송'>
+				<input type='reset' value='취소'>
+			</li>
+		</ol>
+	</fieldset>
+</form>
+</body>
+</html>

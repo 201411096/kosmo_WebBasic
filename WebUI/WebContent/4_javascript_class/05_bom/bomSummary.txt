@@ -1,0 +1,14 @@
+--------------------------------------------------
+setTimeout
+	ㄴ window.setTimeout(func, time) : 지정된 시간이 경과 했을 때 한 번만 처리한다
+--------------------------------------------------
+setInterval
+	ㄴ window.setInterval(func, time) : time 시간 간격으로 반복 처리를 한다
+	ㄴ intervalID를 반환해줌
+		ㄴ intervalID는 clearInterval()인자에 넣어서 함수를 멈추게 할 수 있음
+--------------------------------------------------
+clearInterval
+	ㄴ clearInterval(args);
+	ㄴ 사용예시
+		var intervalId = window.setInterval(updateProgress, 100);
+		clearInterval(intervalId);

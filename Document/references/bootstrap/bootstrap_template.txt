@@ -1,0 +1,5 @@
+﻿https://startbootstrap.com/previews/shop-homepage/
+https://startbootstrap.com/previews/shop-item/
+https://startbootstrap.com/previews/scrolling-nav/
+https://getbootstrap.com/docs/4.0/examples/
+https://getbootstrap.com/docs/4.0/examples/checkout/

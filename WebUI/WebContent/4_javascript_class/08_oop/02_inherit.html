@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Javascript 객체지향  - 상속 </title>
+</head>
+<body>
+	<script>
+		// 부모클래스
+		var Animal = function(){ }; //클래스는 첫번쨰 문자를  대문자로..
+		Animal.prototype = {
+			sound : function(){
+				document.writeln('울부짖다 <br/>');
+			},
+			move : function() {
+				document.writeln('동물은 움직인다 <br/>');
+			}
+		};
+
+		// 자식클래스
+		var Dog = function() {};
+		console.log("function(){} 이후의 Dog type 확인 " + typeof Dog);
+		Dog.prototype = new Animal(); // 상속관계
+		
+		var dog = new Dog();
+		dog.move(); // (1) 부모클래스의 프로토타입
+		
+		// (2) overriding
+		Dog.prototype.sound=function(){
+			document.writeln('멍멍짓다<br/>');
+		}
+		dog.sound();
+		// (3) prototype 추가(부모가 갖고 있지 않을 때)
+		Dog.prototype.tail=function(){
+			document.writeln('꼬리를 흔든다. <br/>');
+		}
+		dog.tail();
+
+	</script>
+</body>
+</html>

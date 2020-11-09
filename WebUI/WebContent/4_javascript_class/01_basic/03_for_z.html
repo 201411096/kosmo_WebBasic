@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 새로운 for 문장 </title>
+    <script type="text/javascript">
+        document.writeln('<table border="2">');   //small quotation double quotation을 교대로 사용
+        /*document.write('<tr> <td> 샘플 </td> </tr>');   */
+        var cnt = 1;
+        for(var i=0; i<5; i++){
+            document.writeln('<tr> ');
+            for(var j=0; j<5; j++)
+                {
+                    document.writeln('<td>' + cnt++ + '</td>');    
+                    /*document.writeln('<td>' + ((j+1)+(i*5)) + '</td>'); */
+                }
+            document.writeln(' </tr>');
+        }
+        document.writeln('</table>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

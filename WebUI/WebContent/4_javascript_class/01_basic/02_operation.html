@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트의 연산자</title>
+<script type="text/javascript">
+
+//1.  실수형 계산에는 주의 -> 2진수로 변환하여 저장하고 연산하기 때문에 발생
+    document.write(0.2*3 == 0.6 + "<br/>"); /* 같지 않다고 나옴 */
+    /*alert(0.2*3);*/ /* 0.6000000000000000001 */
+    document.write(0.2*3*10 == 0.6*10 + "<br/>"); /* 같지 않다고 나옴 */
+    document.write(0.2*10*3 == 0.6*10 ); /* 10을 먼저 곱해서 정수로 만들어줘야함 */
+
+//2.==와 === 차이는?
+    var num = 10;
+    var str = '10';
+    document.write("<br/>");
+    document.write(typeof num + "<br/>");
+    document.write(typeof str + "<br/>");
+    if(num==str) document.write("같다1 <br/>");
+    else document.write("다르다1 <br/>");
+
+/* ===짜리는 자료형도 일치해야함 */
+    if(num===str) document.write("같다2 <br/>");
+    else document.write("다르다2 <br/>");
+		
+// 3. 기본형과 참조형
+    var a = 10;
+    var b = 10;
+    if(a==b) document.write("같다3 <br/>");
+    else document.write("다르다3 <br/>");
+    
+    /* 배열 객체 함수는 참조형이기 때문에 주소값으로 비교 */
+    var c = ['java', 'script'];
+    var d = ['java', 'scrpit'];
+    if(c==d) document.write("같다4 <br/>");
+    else document.write("다르다4 <br/>");
+    
+// 4. boolean형
+    /* true:1 false:0 */
+    /* 나머지 수는 boolean으로 취급하지 않음  */
+    document.writeln("1이 true인지 " + true==1 + "<br/>"); /* 1을 true로 취급 */
+    document.writeln("0이 false인지 " + false==0 + "<br/>"); /* 0을 false로 취급 */
+    document.writeln(true==2);
+    document.writeln(false==-1) 
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

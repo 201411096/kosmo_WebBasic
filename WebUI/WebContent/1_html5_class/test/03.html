@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	 window.onload = function(){
+/* 		function CheckWeight(name, height, weight){
+			this.name=name;
+			this.height=height;
+			this.weight=weight;
+		}
+		CheckWeight.prototype={
+			getInfo:function(){
+				return "이름 : " + this.name + " 키 : " + this.height + " 몸무게 : "+this.weight;
+			},
+			getResult:function(){
+				var maxw=(this.height-100)*0.9+5;
+				var minw=(this.height-100)*0.9-5;
+				if(this.weight>=maxw) //최대몸무게 이상일떄
+					return '비만';
+				else if(this.weight<maxw && this.weight>=minw)
+					return '표준';
+				else
+					return '미달';
+			}}; */
+			/* ***** 클래스사용 ***** */
+			class CheckWeight{
+				constructor(name, height, weight){
+					this.name=name;
+					this.height=height;
+					this.weight=weight;					
+				}
+				getInfo(){
+					return "이름 : " + this.name + " 키 : " + this.height + " 몸무게 : "+this.weight;
+				}
+				getResult(){
+					var maxw=(this.height-100)*0.9+5;
+					var minw=(this.height-100)*0.9-5;
+					if(this.weight>=maxw) //최대몸무게 이상일떄
+						return '비만';
+					else if(this.weight<maxw && this.weight>=minw)
+						return '표준';
+					else
+						return '미달';
+				}
+			}
+			/* ***** 클래스사용 ***** */
+		 var kim = new CheckWeight ( '김길동', 160, 55 );
+		 var lee  = new CheckWeight ( '이길동', 180, 95 );
+		 document.write(  kim.getInfo() );
+		 document.write(  kim.getResult() );
+		 document.write(  lee.getInfo() );
+		 document.write(  lee.getResult() );
+	  }
+	</script>
+</head>
+<body>
+
+</body>
+</html>

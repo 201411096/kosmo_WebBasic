@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+//----------------------------------------------------------
+// 4. 지역변수를 참조하는 함수 안에 함수 클로저(closure)		
+//			전역변수는 특정 함수 몇 개만 공유하지 못하고 전체가 공유하는 변수이다.
+//			클로저는 특정 함수가 암묵적으로 다른 함수의 참조를 가지고 있기 때문에
+//			호출되는 함수가 참조하는 함수의 메모리 공간을 참조한다. (?)
+//			아무튼 클로저를 이용하여 전역변수의 사용을 줄일 수 있다
+
+function add(a, b, callbackfunc){
+	var result = a+b;
+	callbackfunc(result);
+	var count=0;		//count를 같이 공유하는 방식
+	return function(){
+		count++;
+		return count+'호출';
+	};
+}
+var reVar = add(10, 20, function(re){	//add 함수에 의해서 불려지는 함수(다른 함수에 의해 불려지는 함수)
+	document.write('결과=' + re + '<br/>');
+}); //func자리에 바로 함수를 선언하는 방식
+
+/*
+	document.write('결과=' + re + '<br/>');가 한번만 찍혀서 계속 헷갈렸었음 -> 처음에 reVar 선언시에는 15라인부터 23라인까지 다 실행을 하기 떄문에 25라인이 한번 찍힌것
+	-> 이 이후에 reVar는 24~26라인의 function이 아니라 19~22라인의 function이기 떄문에 4번 출력되는게 아니라 한번만 출력되는게 맞음
+*/
+document.write('리턴받은 함수 결과:' + reVar() + '<br/>'); //1
+document.write('리턴받은 함수 결과:' + reVar() + '<br/>'); //2
+document.write('리턴받은 함수 결과:' + reVar() + '<br/>'); //3
+</script>
+</head>
+<body>
+</body>
+</html>

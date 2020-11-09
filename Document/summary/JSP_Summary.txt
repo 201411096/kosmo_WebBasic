@@ -1,0 +1,239 @@
+﻿----------------------------------------
+JSP 기본 구성 요소
+----------------------------------------
+1. Directive(디렉티브)
+	ㄴ 페이지 설정 정보 지정
+	ㄴ <%@  %>
+2. Declaration(선언부)
+	ㄴ 멤버변수, 함수 선언
+	ㄴ <%!    %>
+3. Scriptlet(스크립트릿)
+	ㄴ 자바코드 기술하는 부분
+	ㄴ <%     %>
+4. Expression(표현식)
+	ㄴ 결과값을 화면에 출력
+	ㄴ <%=   %>
+----------------------------------------
+1. WebProject library 추가
+	ㄴ WEB-INF>lib 아래에 추가
+----------------------------------------
+JSP 실행 순서
+	ㄴ 첫번째 실행시 : 클라이언트 -> a.jsp 요청 -> 웹 컨테이너(a.jsp->a_jsp.java->a_jsp.class) -> a_jsp.class 실행 -> 처리결과전송
+	ㄴ 두번째 실행시 : 클라이언트 -> a_jsp.class 실행 -> 처리결과전송
+----------------------------------------
+<% %> <%! %>간의 차이점
+	ㄴ 1. <% String msg = "안녕하세요"; %>
+		ㄴ .jsp -> .java 변환시 지역변수로 변환됨
+	ㄴ 2. <%! String name = "홍길동"; %>
+		ㄴ .jsp -> .java 변환시 멤버변수로 변환됨
+----------------------------------------
+<%= %> 사용시 주의사항
+	ㄴ ; 사용하지 않도록 주의
+		ㄴ <% String msg; %> -> (x)
+----------------------------------------
+JSP에서의 주석
+	ㄴ jsp 주석 : <%-- --%>
+		ㄴ .jsp -> .java 변환시 실행하지 않음
+	ㄴ java 주석 : // /**/
+		ㄴ .java -> .class 변환시 실행하지 않음
+	ㄴ html 주석 : <!-- -->
+		ㄴ .html -> client의 web browser에서 실행하지 않음
+	ㄴ jsp 주석을 사용하는것이 효율적?..
+----------------------------------------
+DB서버와 웹서버는 별개
+----------------------------------------
+에러 페이지 지정
+	ㄴ 1. 디렉티브 대그 이용
+		ㄴ <%@ page errorPage="02_NormalErrorPage.jsp" %>
+	ㄴ 2. web.xml에 에러페이지 지정
+		ㄴ ex) <error-page>
+				..
+			  </error-page>
+----------------------------------------
+Directive 태그의 활용
+	ㄴ 1. include
+		ㄴ 사용예시 header, footer 파일을 따로 생성해서 각각의 페이지 상, 하단에 include
+			ㄴ ex) <%@ include file="04_header.jsp" %>
+			ㄴ ex) <%@ include file="04_footer.jsp" %>
+----------------------------------------
+Request, Response
+	ㄴ 클라이언트 -> 서버 : requset(요청)
+	ㄴ 서버 -> 클라이언트 : response(응답)
+	ㄴ 서버는 js에서의 name값을 받음 (id, class x)
+	ㄴ request의 parameter는 ?바로 뒷부분부터
+	ㄴ request의 parameter는 &으로 구분함
+	ㄴ Query String : ?와 함께 key value쌍으로 묶여있는 것(get방식에서 사용)
+	ㄴ 여러개의 값을 받아올때는 request.getParameterValues()
+	ㄴ form 태그
+		ㄴ method : 웹에서의 데이터 전송 방식 (dopost, doget)
+		ㄴ action : 데이터를 보낼 페이지
+----------------------------------------
+Query String 
+	ㄴ '?'와 함께 파라미터를 붙여 전송
+----------------------------------------
+폼의 요청_GET
+	ㄴ url 뒷부분 파라미터 전송
+	ㄴ http 프로토콜 헤더 영역에서 전송
+	ㄴ 전송데이터 길이 제한
+폼의 요청_POST
+	ㄴ url 뒷부분 전송이 아님
+	ㄴ http 프로토콜 데이터영역에서 전송
+	ㄴ 전송데이터 길이 제한이 없음
+----------------------------------------
+Response
+	ㄴ response.sendRedirect() -> 페이지 이동
+----------------------------------------
+jsp encoding(한글 깨짐)
+	ㄴ <% request.setCharacterEncoding("UTF-8"); %>
+	ㄴ parameter 값을 사용하기 전에 실행해야 정상적으로 작동함
+----------------------------------------
+페이지 이동방법
+	ㄴ redirect : 새로 페이지를 요청한 것처럼 이동
+	ㄴ forward : request, response가 유지됨
+----------------------------------------
+JSP에서 Servlet으로 변환된 파일 위치
+	ㄴ .metadata -> .plugins -> org.eclipse.wst.server.core->tmp0->work->catalina..
+----------------------------------------
+JSP의 기본 객체(내장 객체)
+	ㄴ jsp -> servlet 변환 시 내가 작성한 부분 바깥에서 이미 선언된 부분??.. -> 따로 선언없이 사용이 가능
+----------------------------------------
+기본객체의 종류
+	ㄴ request : 클라이언트의 요청정보
+  	ㄴ response : 응답정보
+	ㄴ pageContext : JSP 페이지에 대한 정보
+	ㄴ session : HTTP 세션 정보를 저장
+	ㄴ out : JSP 페이지 생성시 출력에 사용하는 출력 스트림
+	ㄴ config : JSP 페이지에 대한 설정 정보
+	ㄴ page : JSP 페이지를 구현한 자바클래스의 instance
+	ㄴ exception : 예외 객체(에러페이지에 사용)
+	ㄴ applicaton : 웹 어플리케이션에 대한 정보를 저장
+----------------------------------------
+out 객체
+	ㄴ JSP 페이지가 생성하는 모든 내용이 out 객체를 통해 전송됨
+	ㄴ Servlet에서 사용한 printwriter와 비슷한 맥락인듯
+		ㄴ PrintWriter out = response.getWriter();
+----------------------------------------
+pageContext 객체
+	ㄴ JSP 페이지와 매핑되는 객체
+	ㄴ 다른 기본 객체를 접근하는 메소드
+	ㄴ getRequest(), getResponse(), getSession(), getServletContext(), getServletConfig(), getOut(), getException()m getPage()
+----------------------------------------
+application 객체
+	ㄴ web application에 지정한 초기화 parameter 읽기
+	ㄴ 로그 메시지 기록
+	ㄴ web application 자원 읽기
+	ㄴ getRealPath(), getResource(), getResourceAsStream()
+----------------------------------------
+Cookie
+	ㄴ 웹 브라우저가 보관하는 데이터
+	ㄴ 웹 브라우저는 웹 서버에 요청할 때 쿠키도 같이 전송
+	ㄴ 쿠키는 웹브라우저와 웹서버에서 모두 생성 가능
+		ㄴ 웹 서버에서 : JSP의 cookie 클래스
+		ㄴ 웹 브라우저에서 : Javascript의 cookie 객체
+	ㄴ 컴퓨터에 저장을 하기때문에 보안에 문제가 생길 수 있음(팝업창 설정에 사용)
+	ㄴ 쿠키의 구성
+		ㄴ 이름 : 각각의 쿠키를 구별하는 이름
+		ㄴ 값 : 해당 이름에 저장할 데이터
+		ㄴ 유효기간 : 쿠키가 얼마나 지속할지
+		ㄴ 도메인 : 쿠키를 전송할 도메인
+		ㄴ 경로 :  쿠키를 전송할 요청 경로
+	ㄴ 사용 예시
+		ㄴ Cookie cookie = new Cookie("name", "value");
+		    response.addCookie(쿠키 객체); 		// 쿠키를 클라이언트에 저장
+		ㄴ Cookie [] cookies = request.getCookies();	// 쿠키를 가져옴
+----------------------------------------
+Session
+	ㄴ 웹 컨테이너는 기본적으로 필요한 정보를 저장할 수 있도록 하나의 웹 브라우저당 하나의 세션을 생성
+	ㄴ <%@ page session = "true|false"%>로 지정이 가능하지만 true가 기본값
+	ㄴ 클라이언트별 sessionId를 부여해서 구분
+	ㄴ 쿠키가 클라이언트의 웹브라우저에 저장되는 반면, 세션은 서버에 저장
+	ㄴ Session은 Object 객체 저장 <-> 쿠키는 String만 저장
+	ㄴ 인증된 사용자 정보를 유지하는데 사용
+	ㄴ session 값을 가져올때는 object형으로 가져오게 됨(가져온 후 형변환 필요)
+	ㄴ 클라이언트를 구분하는데 사용하는 jsessionid로 클라이언트를 구분함
+		ㄴ jsessionid : 세션에서 사용되는 쿠키 이름
+----------------------------------------
+Session Method
+	ㄴ getId() : 세션의 고유 ID를 가져오기
+	ㄴ getCreationTime() : 세션의 생성된 시간을 가져오기
+	ㄴ getLastAccessedTime() : 마지막에 세션에 접근한 시간
+	ㄴ setAttribute()
+	ㄴ getAttribute()
+	ㄴ removeAttribute() : 해당 이름의 속성을 제거하기(해당하는 이름의 속성만)
+	ㄴ invalidate() : 세션을 무효화하기(로그아웃할떄 사용?..)
+----------------------------------------
+Session_2
+	ㄴ 세션을 생성하는 다른 방식(Servlet에서 사용하는 방식인듯)
+		ㄴ HttpSession sess = request.getSession(); // 생성된 세션이 있으면 그 세션을 리턴하고 없으면 새로운 세션 생성
+		ㄴ HttpSession sess = request.getSession(false); // 생성된 세션이 있으면 그 세션을 리턴하고 없으면 null 리턴
+		ㄴ HttpSession sess = request.getSession(true); // 세션을 새로 생성해서 리턴(기존의 세션을 가져오지 않음)
+	ㄴ 세션의 유효기간 세팅
+		ㄴ WEB-INF -> web.xml에서 지정 가능
+		ㄴ <session-config>
+		     <session-timeout>50</session-timeout>
+		    </session-config>
+----------------------------------------
+JavaBean
+	ㄴ 데이터를 표현하는 것을 목적으로 하는 JavaClass ( VO : Value Object)
+	ㄴ property, constructor, setter, getter로 구성
+	ㄴ property가 boolean형인 경우는 getter대신 is-method
+	ㄴ property는 jsp파일들 input의 name 속성과 이름을 같게 만듬
+		ㄴ ********** beans 클래스(vo클래스 생성시 input type의 name 속성과 이름을 같게 만들어야함) **********
+	ㄴ 액션태그가 존재
+----------------------------------------
+JavaBean 액션태그
+	ㄴ <jsp:useBean> : 자바빈 객체 생성
+		ㄴ 사용 예시 : <jsp:useBean id="bean" class="info.beans.InfoBean"></jsp:useBean>
+		ㄴ id : 자바빈 객체 인스턴스 이름
+		ㄴ class : 자바빈 객체 클래스
+		ㄴ scope : 생성된 자바빈 객체가 저장되는 영역
+			ㄴ page : 하나의 JSP 페이지 내에서 공유될 값을 저장
+			ㄴ request : 한번의 요청을 처리하는 데 사용되는 모든 JSP 페이지에서 공유될 값을 저장
+			ㄴ session : 한 사용자와 관련된 정보를 JSP들이 공유하기 위해서 사용
+			ㄴ application : 모든 사용자와 관련해서 공유할 정보를 저장
+	ㄴ <jsp:setProperty>
+		ㄴ 사용 예시 : <jsp:setProperty name="bean" property="name"/>
+		ㄴ 사용 예시 : <jsp:setProperty name="bean" property="*"/>
+			ㄴ property="*"로 사용하면 모든 property를 다 가져옴
+	ㄴ <jsp:getProperty>
+		ㄴ 속성이 없어도(javabean파일에 멤버변수가 없어도) getter가 있으면 똑같이 나옴
+		ㄴ 잘 안씀
+	ㄴ <jsp:include> : 다른 페이지를 동적 삽입
+		ㄴ footer, header에 사용한 것과 비슷한 느낌->(x)-><%@ include file=""%>로 사용
+		ㄴ <%@ include file=""%> 과의 차이점
+			ㄴ 동적페이지 삽입 <-> 정적 페이지 삽입
+			ㄴ 별도의 페이지로 요청(request) 처리 <-> 현재파일에 삽입할 페이지의 변환된 자바소스를 삽입
+			ㄴ 화면의 레이아웃의 일부분을 모듈화할 때 주로 사용 <-> 다수의 페이지에 공통부분을 포함할 때 주로 사용(header, footer)
+	ㄴ <jsp:forward> : 하나의 페이지에서 다른 페이지로 요청(request)처리를 전달
+		ㄴ url은 이전 페이지인데 내용은 다음 페이지임
+	ㄴ <jsp:param> : JSP 페이지에 property 추가
+			ㄴ <jsp:include>나 <jsp:forward> 태그에서 삽입하거나 이동하는 페이지에 파라미터를 추가
+				ㄴ ex) param에 따라 달라지는 이미지?..
+----------------------------------------
+액션태그 - <jsp:setProperty>
+	ㄴ 기본방식
+		ㄴ Bean b = new Bean();
+		ㄴ String id = request.getParameter("id");
+		ㄴ b.setId(id);
+	ㄴ 새로운 방식
+		ㄴ <jsp:useBean id = "b" class = "Bean">
+		ㄴ   <jsp:setProperty name="b" property="id"/>
+		ㄴ </jsp:useBean>
+----------------------------------------
+페이지 이동
+	ㄴ <% reponse.sendRedirect('b.jsp'); %>
+		ㄴ request 2번, response 2번
+	ㄴ <jsp:forward page = 'b.jsp' />
+		ㄴ request 1번, response 1번 (url이 그대로)
+----------------------------------------
+표현 언어 (Expression Language)
+	ㄴ JSP 기본문법을 보완하는 스크립트 언어
+	ㄴ <%=%> 코드 대신 ${expr} 사용
+	ㄴ 표현언어 ${info.name}
+		ㄴ 내부적으로 Class 내부 메소드의 getName()을 불러옴
+		ㄴ 표현식으로는 <%= info.getName() %>
+----------------------------------------
+ip주소 저장 ( request.getRemoteAddr )
+
+1. eclipse에서 톰캣을 실행시 셋팅 -> 메뉴의 Run -> Run Configurations -> Arguments 탭 -> -Djava.net.preferIPv4Stack=true 추가
+2. 톰캣설치경로 /bin/catalina.bat 의 "set JAVA_OPTS" 라는 키워드로 검색하면 두개가 나오는 곳에  -Djava.net.preferIPv4Stack=true 추가

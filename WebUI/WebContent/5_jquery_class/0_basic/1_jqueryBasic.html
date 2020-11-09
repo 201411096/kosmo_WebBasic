@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> 첫 연습 </title>
+
+	<style type="text/css">
+		#here {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="../lib/jquery-3.5.1.min.js"></script> -->
+	<script type="text/javascript">
+		$(function(){	// window.onload와 비슷 - DOM이 사용될 준비가 될 때 함수가 실행하기 위해
+			//$('#here').hide();
+			//$('div#here').hide(); // css와 달리 공백이 있으면 찾지를 못함
+			//As the .click() method is just a shorthand for .on( "click", handler ), detaching is possible using .off( "click" ).
+
+			var h = $('#here');
+			// 1. 이벤트 리스너 부착 방법1(축약)
+			/*h.click(function(){
+				h.text('클릭하면 내용이 변경가능');
+			});*/
+
+			// 2. 이벤트 리스너 부착 방법2
+			h.on("click", function(){
+				h.text('클릭하면 내용이 변경가능');
+			});
+
+			//3. 이벤트 리스너 탈착? 방법
+			//h.off("click");
+
+			h.mouseenter(function(){
+				h.text('마우스가 들어왔습니다.');
+			});
+
+			h.hover(function(){ // 마우스가 들어왔을 때의 함수
+				h.css('border', '3px solid red');
+			}, function(){
+				h.css('border', '1px dashed blue');
+			}) // 마우스가 나갔을떄의 함수
+
+			//효과 함수
+/*
+			$('#here').fadeOut(1000); //사라지는 효과
+			$('#here').fadeIn(1000); //사라지는 효과
+*/
+//			$('#here').fadeOut(1000).fadeIn(1000); //chaining 기법
+//			$('#here').slideUp(1000).slideDown(2000);
+
+//			$('#here').animate({  }); //사용되는 속성이 두개 이상일 경우에...
+			$('#here').animate({top:200, left:300});
+			$('#name').css({'background-color':'blue', 'color':'yellow', 'border':'3px solid red'});
+		});
+	</script>
+</head>
+<body>
+	<div id="here">
+	아자아자 제이쿼리~~!!! 
+	</div>
+	<div id="student">
+		<div id="name">홍길동</div>
+		<div id="age">34</div>
+	</div>
+</body>
+</html>

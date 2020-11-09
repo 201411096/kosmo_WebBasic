@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Document 예제 </title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	 body { 
+			background-color: #ffcc33;
+			color: #2222ff;
+		} 	
+	</style>
+	<script type="text/Javascript">
+		window.onload = function(){
+	    	document.getElementById('btn').onclick = function(){ //btn이라는 id값을 갖고 있는 요소가 클릭되었을 때 실행되는 함수
+	 			// 1. ID로 찾기
+	 			/*var userName = document.getElementById('userName').value;*/
+	 			/*var userName = document.querySelector('#userName').value;*/
+
+	 			//2. 폼의 요소 찾기(name attribute 사용)
+	 			var userName = frm.username.value; //document.frm.username.value
+
+	 			result.innerHTML = userName+"님 반갑";
+
+	 			document.frm.submit(); // btn이라는 id값을 갖고 있는 버튼이 눌렸을 경우  제출이 됨
+	    	}
+	    }
+	</script>
+</head>
+<body>
+	<!-- 폼태그 안에 있는 입력값은 서버로 전송할 수 있다  -->
+	<form name="frm" action="xxxxxx.jsp">
+		당신의 이름은? <input type="text" id='userName' name='username' size="20">
+		<input type="button" value="확인" id='btn'>
+   	</form>
+	<div id='result'></div>
+</body>
+</html>
+
+<!--  이벤트바인딩방식을 이벤트 핸들러 방식으로 변경 -->

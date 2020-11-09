@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="BoardMapper">
+	<select id="selectBoardList" parameterType="hashmap" resultType="board">
+<!-- 	객체의 list를 반환할 결우 resultType은 list가 아닌 list의 꺽새 안에 들어가는 객체가 resultType임   -->
+<!-- references : https://zero-gravity.tistory.com/176 -->
+	<![CDATA[
+		SELECT * FROM article WHERE SEQUENCE_NO in(
+			select SEQUENCE_NO FROM (SELECT rownum, sequence_no from 
+				(select SEQUENCE_NO from article order by SEQUENCE_NO desc)
+				where rownum >= #{firstRow} and rownum <= #{lastRow}
+			)			
+		)order by SEQUENCE_NO desc
+		]]>
+	</select>
+	<select id="getRecordCount" resultType="int">
+		SELECT COUNT(*) AS CNT FROM article
+	</select>
+	<select id="getArticleById" parameterType='int' resultType="board">
+		SELECT * FROM article WHERE ARTICLE_ID=#{articleId}
+	</select>
+	<insert id="write" parameterType="board">
+		INSERT INTO article(ARTICLE_ID, GROUP_ID, SEQUENCE_NO, POSTING_DATE,
+					READ_COUNT, WRITER_NAME, PASSWORD, TITLE, CONTENT)
+					VALUES(SEQ_ARTICLE_ID_ARTICLE.nextval, #{groupId}, #{sequenceNo}, sysdate,
+					0, #{writerName}, #{password}, #{title}, #{content}	
+					)
+	</insert>
+	<select id="getGroupId" resultType="int">
+		SELECT SEQ_GROUP_ID_ARTICLE.nextval as groupId FROM dual
+	</select>
+	<select id="getCurrentArticleVal" resultType="int">
+		SELECT SEQ_ARTICLE_ID_ARTICLE.currval AS articleId FROM DUAL
+	</select>
+	<delete id="delete" parameterType="hashmap">
+		DELETE FROM article WHERE ARTICLE_ID=#{articleId} AND PASSWORD=#{password}
+	</delete>
+	<update id="update" parameterType="board">
+		UPDATE article set TITLE=#{title}, CONTENT=#{content} where ARTICLE_ID=#{articleId} AND PASSWORD=#{password}
+	</update>
+	<select id="selectLastSequenceNumber" parameterType="hashmap" resultType="int">
+	<![CDATA[
+		SELECT min(sequence_no) as minseq FROM article WHERE sequence_no < #{maxSeqNum} AND sequence_no >= #{minSeqNum}
+		]]>
+	</select>
+	<update id="increaseReadCount" parameterType="string">
+		UPDATE article set READ_COUNT=READ_COUNT+1 where ARTICLE_ID=#{articleId}
+	</update>
+</mapper>

@@ -1,0 +1,100 @@
+﻿------------------------------------------------------------
+MyBatis
+	ㄴ JDBC : Connection <-> Mybatis : SqlSession
+------------------------------------------------------------
+설치 페이지가 따로 없는듯
+	ㄴ https://github.com/mybatis/mybatis-3/releases
+------------------------------------------------------------
+JDBC Connection Pool
+	ㄴ connection을 미리 열어두고 관리하여 사용하는 방식
+------------------------------------------------------------
+MyBatis 구조
+	ㄴ config.xml
+	ㄴ mapper.xml : CRUD (테이블 하나에 하나씩 사용하는 것이 일반적)
+		ㄴ ***** config.xml에 mapping 필요
+------------------------------------------------------------
+MyBatis 동작 구조
+	ㄴ 1) 모델단 : 테이블 생성과 VO 클래스
+	ㄴ 2) ~Config.xml : db 연결과 mapper 등록
+	ㄴ 3) ~Mapper.xml : CRUD
+	ㄴ 4) ~Repository.java : ~config.xml 연동
+------------------------------------------------------------
+vo 객체
+	ㄴ 원래는 implements Serializable 필요(최근에는 없어도 되기는 함)
+	ㄴ 멤버 변수 선언시 낙타표기법(Camel Case) 사용 <-> db는 언더바표기법(Snake Case)
+------------------------------------------------------------
+POJO - Plain Old Java Object
+------------------------------------------------------------
+mapper.xml
+	ㄴ mapper namespace : mapper의 별칭
+		ㄴ 보통 파일이름과 같은 String을 할당
+	ㄴ id
+	ㄴ resultType
+	ㄴ parameterType
+	ㄴ sql
+		ㄴ select 문 작성시 select 태그로 감싸고 그 안에 select문을 작성
+		ㄴ sql문 작성시 ';'을 마지막에 붙이지 않도록 주의
+------------------------------------------------------------
+Repository.java
+	ㄴ inputstream을 통해서 ~config.xml을 불러옴
+	ㄴ 연결 객체
+		ㄴ JDBC : connection
+		ㄴ MyBatis : SqlSession
+	ㄴ 기존의 model 클래스와 같은 역할을 함
+------------------------------------------------------------
+mybatis-config tag_summary
+	ㄴ properties
+	ㄴ settings
+	ㄴ typeAliases
+------------------------------------------------------------
+mybatis-config.xml : Settings
+	ㄴ 언더바표기법(snakeCase)를 낙타표기법(camelCase)으로 변경	
+		ㄴ<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+------------------------------------------------------------
+mybatis-config.xml : typeAliases 
+	ㄴ ex) <typeAlias type="mybatis.guest.model.Comment" alias="comment"/>
+	ㄴ mapper.xml (sql문이 작성되는 파일)에서 resulttype parametertype등에 지정한 alias(별칭)으로 사용할 수 있게 됨
+	ㄴ sql문으로 가져온 값들을 vo 객체에 담아줄 때 자동으로 변환해준다는 이야기인듯
+------------------------------------------------------------
+mybatis-config.xml : properties
+	ㄴ ex) <properties resource="dbconnect.properties"></properties>
+		ㄴ file(.properties )
+			ㄴ db 연결 정보 관리에 사용
+------------------------------------------------------------
+mybatis commit rollback
+	ㄴ 자동으로 커밋이 안됨
+	ㄴ ~.commit() 필요
+		ㄴ ex) SqlSession sqlSess = getSqlSessionFactory().openSession();
+		ㄴ ex) sqlSess.rollback();
+	ㄴ ~.rollback() 필요
+------------------------------------------------------------
+mybatis mapper tag : resultType
+	ㄴ default값이 int
+------------------------------------------------------------
+mybatis hashmap 사용법
+	ㄴ parameter로 넘어간 경우 : hashmap.get("")을 mybatis에서 그냥 key값을 넣으면 됨
+		ㄴ HashMap map = new HashMap();
+		ㄴ map.put("commentNo", commentNo);
+		ㄴ sqlSess.selectOne("CommentMapper.selectCommentByPrimaryKey", map);
+		ㄴ <select id="selectCommentByPrimaryKey" parameterType="hashmap" resultType="comment">SELECT * FROM comment_tab WHERE comment_no=#{commentNo}</select>
+------------------------------------------------------------
+mybatis dynamic sql 
+	ㄴ ex) primarykey가 있는 경우만 where절 실행
+		ㄴ <select id="selectCommentByPrimaryKey" parameterType="hashmap" resultType="comment">
+			SELECT * FROM comment_tab
+			<where>
+				<if test='commentNo != null'>
+					comment_no=#{commentNo}
+				</if>
+			</where>
+		</select>
+------------------------------------------------------------
+response.sendredirect() 와 RequestDispatcher를 이용한 .forward()의 차이점
+	ㄴ sendRedirect()는 HTTP 리다이렉션을 이용하기 때문에 하나의 요청 범위 안에서 처리를 하는것이 아니라 브라우저에게 Response 후 브라우저측에서 지정받은 요청 경로로 다시 재요청을 하는 방식이기에 두 번의 HTTP 트랜잭션이 발생하며, 서버측에서는 최초에 받은 요청중에 처리한 내용을 리다이렉트 된 요청안에서 공유할 수 없는 문제가 있습니다
+	ㄴ RequestDispatcher는 현재 처리중인 서블릿이 속해 있는 웹 어플리케이션 범위 내에서만 요청을 제어할 수 있습니다.
+	ㄴ forward() 메서드는 대상 자원으로 제어를 넘기는 역할을 합니다.
+------------------------------------------------------------
+Difference beteween Repository and DAO
+	ㄴ DAO is an abstraction of data persistence.
+	ㄴ Repository is an abstraction of a collection of objects.
+	ㄴ Repository could be implemented using DAO's, but you wouldn't do the opposite.

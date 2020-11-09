@@ -1,0 +1,23 @@
+1. 전화번호 이메일 주소까지 check
+2. 약관 동의 두가지
+3. 바로 결제하기 버튼으로..
+----------------------------------------------------------------
+adultNumber - 성인 textField
+childNumber - 아동 textField
+babyNumber - 아기 textField
+totalPrice - 상품합계금액 textField
+checkbox - 여행약관에 동의 checkbox
+checkbox2 - 개인정보 보호정책에 동의 checkbox
+koreanName - 한글 이름 textField
+radio - 남자 radiobutton
+radio2 - 여자 radiobutton
+englishLastName - 영문 성 textField
+englishFirstName - 영문 이름 textField
+select - 연령 기준 선택 //****************************************************************안해도 됨
+personId1 - 주민번호 앞부분
+personId2 - 주민번호 뒷부분
+tel1 - 전화번호1
+tel2 - 전화번호2
+tel3 - 전화번호3
+email - 이메일 주소
+calculationBtn - 바로결제하기 이미지(버튼)

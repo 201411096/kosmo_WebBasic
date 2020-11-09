@@ -1,0 +1,29 @@
+﻿github summary
+--------------------------------------------------------------------------------
+git bash 초기 설정
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+--------------------------------------------------------------------------------
+github에 수정한 내용 올릴 때
+git add --all
+git commit -m "하고싶은말"
+git push -u origin master
+--------------------------------------------------------------------------------
+github에 있는 내용 받아올 때(수정된 내용들)
+git pull
+--------------------------------------------------------------------------------
+git checkout - 현재 branch 확인
+git checkout branch_name - 그 branch로 변경
+git branch - 현재 branch 종류 확인
+--------------------------------------------------------------------------------
+git branch branch_name - branch 생성
+git push -u origin branch_name - 해당 branch 원격 저장소에 올림
+--------------------------------------------------------------------------------
+git merge branch_name - branch할 저장소를 합침
+--------------------------------------------------------------------------------
+git branch -d branch_name - local branch 저장소 삭제
+git push origin --delete branch_name - 원격 branch 저장소 삭제
+--------------------------------------------------------------------------------
+git commit message 수정(마지막 커밋 수정 방법)
+git commit --amend -m "commit_message"
+git push -f

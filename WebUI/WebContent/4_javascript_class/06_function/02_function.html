@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>리터럴 함수</title>
+</head>
+<body>
+	<script>
+
+	// @ function 명령은 정적인 구조이고, 
+	// @ Function 생성자와 함수리터럴은 실행시 판단한다(동적인 구조?).
+
+/*
+	document.writeln('삼각형의 면적은 2 ' +  triangle(4,3) + '</br>');
+	function triangle ( base, height ){
+				return base * height / 2;
+	}
+
+	//document.writeln('삼각형의 면적은 ' +  triangle(4,3) + '</br>');//리터럴 방식은 함수선언보다 앞에 있을 경우 실행되지 않음		
+	var triangle = function( base, height ){
+		//alert( this.base );
+		return base * height / 2;
+	} 	
+	document.writeln('삼각형의 면적은 ' +  triangle(4,3) + '</br>');//리터럴 방식은 함수선언보다 앞에 있을 경우 실행되지 않음		
+	document.writeln("triangle 함수 자체의 값 : " + triangle + "</br>");
+	document.writeln("triangle 함수의 type : " + typeof triangle + "</br>");
+	triangle='문자열';
+	document.writeln("triangle 함수 자체의 값 : " + triangle + "</br>"); //문자열로 덮어쓰기 됨
+*/
+
+
+	// @ 함수는 데이터형의 일종이다.
+
+/*
+	function doA(){
+		document.writeln('함수 A <br/>');
+	}
+	function doB(){
+		document.writeln('함수 B <br/>');
+	}	
+	var arr = [doA, doB];
+	console.log(arr);
+
+	arr[0](); // doA함수 호출 -> doA();
+*/
+
+	
+	// @ 함수가 다른 함수의 인자나 리턴값이 될 수 있다.
+/*
+		function(data){
+			return data;
+		}
+*/
+	/*
+		함수명 : f4
+		매개변수명 : f1, f2, f3
+	*/
+	function f4(f1, f2, f3){
+		return f3(f1()+f2());
+	}
+
+	var result = f4(function(){return 2;}, function(){return 3;}, function(a){return a*a});
+	document.writeln('result='+ result);
+
+	</script>
+</body>
+</html>

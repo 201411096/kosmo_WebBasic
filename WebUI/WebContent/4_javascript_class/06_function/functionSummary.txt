@@ -1,0 +1,46 @@
+------------------------------------------------------------
+1.함수 생성 방법
+	ㄴ 기본
+		ㄴ 사용 예시
+				ㄴ function first(){
+					console.log("첫번째 함수 호출");
+					var txt = document.getElementById('first');
+					txt.style.backgroundColor='red';
+					txt.style.color='yellow';
+				}
+	ㄴ 리터럴 방식
+		ㄴ 사용 예시
+				ㄴ var third = function(){
+					console.log("세번째 함수 호출");
+					var txt = document.getElementById('third');
+					txt.style.backgroundColor='red';
+					txt.style.color='yellow';	
+				}
+	ㄴ Function 생성자
+		ㄴ syntax - new Function ([arg1[, arg2[, ...argN]],] functionBody)
+		ㄴ Function 생성자 사용시 인자내에서 중간에 개행이 있으면 안 됨
+		ㄴ 사용 예시
+				ㄴ var second = new Function("console.log('두번째 함수 호출');	var txt = document.getElementById('second');txt.style.backgroundColor='red';txt.style.color='yellow';");
+
+	ㄴ 애로우 함수
+		ㄴ 사용 예시
+				ㄴ var fourth = ()=>{
+					console.log("네번째 함수 호출");
+					var txt = document.getElementById('fourth');
+					txt.style.backgroundColor='red';
+					txt.style.color='yellow';
+				};
+------------------------------------------------------------
+2. local variable in js
+	ㄴ 자바스크립트에서의 지역변수는 함수블럭 안에서의 변수만을 이야기함
+		ㄴ if문, for문안에서 선언된 변수들도 전부 글로벌 변수
+			ㄴ for문 안에서 선언된 변수들이 중복이 되어도 덮어쓰기가 되기 때문에 문제를 일으키지 않음
+------------------------------------------------------------
+3. datatype in js
+	ㄴ 기본형 : number, boolean, string, 특수형(null/undefined)
+		ㄴ  java와 다르게 String형도 기본형으로 취급
+	ㄴ 참조형 : array, object, function
+------------------------------------------------------------
+4. call by value <-> call by reference
+	ㄴ 기본형 datatype을 인자로 받을 경우 값을 복사받아 원본이 수정되지 않음
+	ㄴ 참조형 datatype을 인자로 받을 경우 그 주소값을 복사받아 원본이 수정됨

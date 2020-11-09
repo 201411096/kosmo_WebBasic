@@ -1,0 +1,69 @@
+----------------------------------------
+내부함수
+	ㄴ 자바스크립트는 함수 안에서 또 다른 함수를 선언할 수 있다.
+	ㄴ 내부함수는 외부함수의 지역변수에 접근할 수 있다.
+	ㄴ 클로저(closure)는 내부함수와 밀접한 관계를 가지고 있는 주제다.
+----------------------------------------
+클로저
+	ㄴ 클로저(closure)는 내부함수와 밀접한 관계를 가지고 있다.
+	ㄴ 내부함수는 외부함수의 지역변수에 접근 할 수 있는데 외부함수의 실행이 끝나서 외부함수가 소멸된 이후에도 내부함수가 외부함수의 변수에 접근 할 수 있다.
+	ㄴ 클로저란 내부함수가 외부함수의 지역변수에 접근 할 수 있고, 외부함수는 외부함수의 지역변수를 사용하는 내부함수가 소멸될 때까지 소멸되지 않는 특성을 의미한다.
+	ㄴ 클로저는 외부함수가 리턴된 이후에도 외부함수의 변수에 접근할수 있습니다.
+	ㄴ 클로저가 갱신된 외부함수의 변수에 접근함으로써, 외부 함수의 변수가 for문에 의해 변경될 경우 의도치 않은 버그가 발생할 수 있습니다..?
+	ㄴ 예시1)
+			ㄴ function factory_movie(title){
+				    return {
+				        get_title : function (){
+				            return title;
+				        },
+				        set_title : function(_title){
+				            title = _title
+				        }
+				    }
+				}
+				ghost = factory_movie('Ghost in the shell');
+				matrix = factory_movie('Matrix');
+				 
+				alert(ghost.get_title());
+				alert(matrix.get_title());
+				 
+				ghost.set_title('공각기동대');
+				 
+				alert(ghost.get_title());
+				alert(matrix.get_title());
+	ㄴ 예시2)
+			ㄴ <!DOCTYPE html>
+				<html>
+					<body>
+						<h2>JavaScript Closures</h2>
+						<p>Counting with a local variable.</p>
+						<button type="button" onclick="myFunction()">Count!</button>
+						<p id="demo">0</p>
+						<script>
+						var add = (function () {
+						  var counter = 0;
+						  return function () {counter += 1; return counter;}
+						})();
+						function myFunction(){
+						  document.getElementById("demo").innerHTML = add();
+						}
+						</script>
+					</body>
+				</html>
+	ㄴ 예시3)
+			ㄴfunction showName(firstName, lastName) {
+			    var nameIntro = "Your name is ";
+			    // 이 내부 함수는 외부함수의 변수뿐만 아니라 파라미터 까지 사용할 수 있습니다.
+			    function makeFullName() {
+			        return nameIntro + firstName + " " + lastName;
+			    }
+			    return makeFullName();
+			}
+			showName("Michael", "Jackson"); // Your name is Michael Jackson
+	ㄴ 예시4)
+			ㄴ $(function() {
+				    var selections = [];
+				    $(".niners").click(function() { // 이 클로저는 selections 변수에 접근합니다.
+				        selections.push(this.prop("name")); // 외부 함수의 selections 변수를 갱신함
+				    });
+				});

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById('btn').onclick=function(){
+				/* ***** form tag에 한해서 이름으로 직접 접근이 가능 ***** */
+				/*
+				document.myForm.txt0.value='데이터0';
+				myForm.txt1.value='데이터1';					// document는 생략이 가능
+				document.forms[0].txt2.value='데이터2';		// 권장하지 않음
+				document.myForm['txt3'].value='데이터3';
+				*/
+
+				// 각각 input 태그에 "데이터"라는 값을 지정
+				for(var i=0; i<document.myForm.length; i++){//myform의 크기만큼 반복
+					document.myForm[i].value="데이터"+i;		//myform의 요소마다 데이터 값을 지정
+					/*document.myForm["txt" + i].value="데이터"+i;		//myform의 요소마다 데이터 값을 지정*/
+				}
+			}
+		} //windows.onload 종료
+	</script>
+</head>
+<body>
+	
+	<form name='myForm'>
+		첫번째 :  <input type='text' name='txt0'><br/>
+		두번째 :  <input type='text' name='txt1'><br/>
+		세번째 :  <input type='text' name='txt2'><br/>
+		네번째 :  <input type='text' name='txt3'><br/>
+
+		<input type='button' value='값지정'  id='btn'>
+	</form>
+
+</body>
+</html>

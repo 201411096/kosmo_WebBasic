@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> 파라메터 인자</title>
+	<script>
+		// call by value : 함수의 인자가 기본형일떄
+		// call by reference : 함수의 인자가 참조형일떄
+		/* 
+			자바스크립트의 데이터형
+				ㄴ 기본형 : number, boolean, "string", 특수형(null/undefined)
+				ㄴ 참조형 : 배열, 객체, 함수
+		*/
+
+		var pri = 10;
+		function priParam(pri){
+			pri--;
+			return pri;
+		}
+		document.write('기본형인자 1>' + priParam(pri) + "<br/>");
+		document.write('기본형인자 2>' + pri + "<br/>");	// call by value(원본을 건드리지 않음) 
+
+		var ref = [1,2,3,4,5];
+		function refParam(ref){
+			ref.pop(); // 스택구조(LIFO)로 취급
+					   // 큐 구조(FIFO)로 취급 : shift();
+			return ref;
+		}
+		document.write('참조형인자 1>' + refParam(ref) + "<br/>");
+		document.write('참조형인자 2>' + ref + "<br/>"); // call by reference(원본이 수정됨)
+	</script>
+</head>
+<body>
+  
+</body>
+</html>

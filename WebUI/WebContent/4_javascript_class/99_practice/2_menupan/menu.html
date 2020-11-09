@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 메뉴판</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+<body>
+
+   <div id = 'wrapper'>
+        <div class="content">
+            <div id="content1">
+
+            </div>
+            <div id="content2">
+            </div>
+        </div>
+        <table border='1' id='tablemenu'>
+            <tr>
+                <td id='menu1' class='menu'>아메리카노<br/>1000원</td>
+                <td id='menu2' class='menu'>카페라떼<br/>2000원</td>
+                <td id='menu3' class='menu'>쥬스<br/>3000원</td>
+            </tr>
+            <tr>
+                <td id='menu4' class='menu'>과자<br/>2000원</td>
+                <td id='menu5' class='menu'>엿<br/>1000원</td>
+                <td id='menu6' class='menu'>땅콩<br/>1500원</td>
+            </tr>
+            <tr>
+                <td colspan='3'>
+                    갯수 :  <input id='currentMenuCount' type=number>
+                    <input type='button'   value='확인'  id='checkbtn'/>      
+                    총합 : <input type='text'  id='total'/>원
+                    <input type='button'   value='최종주문'  id='orderbtn'/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

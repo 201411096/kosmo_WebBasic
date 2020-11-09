@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title> 폼 예제 2</title>
+	</head>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById('up').onclick=function(){	//up버튼 사용시 select값의 value들이 위아래로 바뀜
+				var idx = document.frm.play.selectedIndex;
+				var optSel = document.frm.play.options;	// select 'play'의 옵션들..
+
+				//방법 1 두개씩만 바뀜
+				str=optSel[idx].text;
+				if(idx>0){
+					optSel[idx].text=optSel[idx-1].text;
+					optSel[idx-1].text=str;
+					optSel[idx-1].selected=true;
+				}
+				else if(idx==0){
+					optSel[idx].text=optSel[optSel.length-1].text;
+					optSel[optSel.length-1].text=str;
+					optSel[optSel.length-1].selected=true;
+				}
+				// 방법 2 한칸씩 shift
+/*				var temp = optSel[0].text;
+				for(var i=1; i<optSel.length; i++){
+					var str = optSel[i].text;
+					optSel[i-1].text=str;
+				}
+				optSel[optSel.length-1].text=temp;
+
+				if(idx>0){
+					optSel[idx-1].selected=true;
+				}else if(idx==0){
+					optSel[optSel.length-1].selected=true;
+				}*/
+			}
+			document.getElementById('down').onclick=function(){
+				var idx = document.frm.play.selectedIndex;
+				var optSel = document.frm.play.options;	// select 'play'의 옵션들..
+				str=optSel[idx].text;
+
+				//방법 1 두개씩만 바뀜
+				if(idx<optSel.length-1){
+					optSel[idx].text=optSel[idx+1].text;
+					optSel[idx+1].text=str;
+					optSel[idx+1].selected=true;
+				}
+				else if(idx==optSel.length-1){
+					optSel[idx].text=optSel[0].text;
+					optSel[0].text=str;
+					optSel[0].selected=true;
+				}
+			}	
+		}
+	</script>
+<body>
+
+내가 제일 좋아하는 놀이 순서대로 한다면 <br>
+
+<form name="frm">
+<select name="play" size="8">
+	<option selected> 숨쉬기 </option>
+	<option> 밥먹기 </option>
+	<option> 그냥있기 </option>
+	<option> 잠자기 </option>
+	<option> 술먹기 </option>
+	<option> 멍때리기 </option>
+</select> <br>
+
+<input type="button" id='up'	value="▲"><br><br>
+<input type="button" id='down'	value="▼"><br><br>
+</form>
+
+</body> 
+</html>

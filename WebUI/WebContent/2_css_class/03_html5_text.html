@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>제주 올레</title>
+
+	<style type="text/css">
+	body{
+		background: #FFF url(../images/new/bg3.jpg) repeat-x fixed left bottom
+	}/* 똑같은 색이 두개일경우 하나씩만 써줘도 됨 FFFFFF -> FFF  */
+	
+	/* 브라우저 설정
+	   window -> web browser 선택
+	*/
+	p{
+		background: #90D000;
+		width:500px;
+		padding:40px; /* border를 중심으로 안쪽의 여백 <-> border를 기준으로 바깥쪽의 여백은 margin  */
+		margin:5px;	
+		/* 곡선 설정 -> border-radius  */
+		/* border-radius:50px; */ 
+/* 		border-radius:50px 20px 100px 10px; */
+		/*
+		     좌표 순서(시계방향)
+	       1	2
+		   4	3
+		  */
+		border-radius: 50px 100px 10px; /* 반대편이 자동으로 100이 됨  */
+	}
+	h1{
+		text-shadow: 5px 1px 7px darkBlue; /* 그림자 효과  */
+	}
+	</style>
+</head>
+
+<body>
+<header>
+<h1>제주 올레</h1>
+</header>
+
+<section>
+  <h3>제주 올레 7코스</h3>						<!-- <mark>태그 사용시 형광색 효과 -->
+  <p>외돌개를 출발하여 법환포구를 경유해 월평포구까지 어어진 해안올레. 올레인들이 가장 아끼고 <mark>자연생태길</mark>인 <mark>'수봉로'</mark>를 만날 수 있다. <mark>수봉로</mark>는 세 번째 코스 개척 시기인 2007년 12월, 올레지기인 '김수봉'님이 염소가 다니던 길에 직접 삽과 곡괭이만으로 계단과 길을 만들어서 사람이 걸어다닐 수 있도록 한 길이다. </p>
+
+  <!-- 알아서 연습하도록 -->
+  <strong>패스포트 스탬프 확인 장소</strong>
+  <p><b>시작</b><del>외돌개</del> 제주 올레 안내소<br>
+  <b>중간</b> 강정 올레 쉼터<br>
+  <b>종점</b> 월평 송이 슈퍼</p>
+  보통문자 <small>작은문자</small><br/>
+  보통문자<sub>아랫첨자</sub><br/>
+  보통문자<sup>윗첨자</sup><br/>
+
+  <pre><b>난이도 : 상</b> 총 16.4km(4~5시간)<br>	<!-- <pre>태그 사용시 공백 혹은 줄바꿈이 전부 적용이 됨 -->
+  수봉로는 
+  언덕길이고 일강정 바당올레에서 
+  	서건도 사이 바윗길이 험한 편이다.</pre>
+  	<p><b>난이도 : 상</b> 총 16.4km(4~5시간)<br>
+  수봉로는 
+  언덕길이고 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일강정 바당올레에서 	<!-- &nbsp는 하나의 공백을 의미함  -->
+  	서건도 사이 바윗길이 험한 편이다.</p>
+</section>
+
+<section>
+  <figure>
+    <img src="../images/new/road1.jpg">
+      <figcaption>수봉로 언덕을 넘자마자 다시 만나게 되는 바다. </figcaption>
+  </figure> 
+  <figure>
+    <img src="../images/new/road2.jpg">
+      <figcaption>외돌개 산책로에서 외돌개가 보인다. 전설을 들어보면 가슴 아리다.</figcaption>
+  </figure> 
+</section>
+
+</body>
+</html>
+

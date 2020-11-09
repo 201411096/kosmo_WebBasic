@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 함수 만들기</title>
+	<script>
+		function first(){
+			console.log("첫번째 함수 호출");
+			var txt = document.getElementById('first');
+			txt.style.backgroundColor='red';
+			txt.style.color='yellow';
+		}
+
+		/* Function 생성자 사용시 중간에 개행이 있으면 안됨 */
+		var second = new Function("console.log('두번째 함수 호출');	var txt = document.getElementById('second');txt.style.backgroundColor='red';txt.style.color='yellow';");
+
+		var third = function(){
+			console.log("세번째 함수 호출");
+			var txt = document.getElementById('third');
+			txt.style.backgroundColor='red';
+			txt.style.color='yellow';	
+		}
+
+		var fourth = ()=>{
+			console.log("네번째 함수 호출");
+			var txt = document.getElementById('fourth');
+			txt.style.backgroundColor='red';
+			txt.style.color='yellow';
+		};
+
+	</script>
+</head>
+
+<body>
+	<p> <span id="first"> function 명령 </span>
+		<input type="button" value="확인" onclick="javascript:first()"/>
+	</p>
+	<p> <span id="second"> Function 생성자 </span>
+		<input type="button" value="확인" onclick="javascript:second()"/>
+	</p>
+	<p> <span id="third"> 함수 리터럴 </span>
+		<input type="button" value="확인" onclick="javascript:third()"/>
+	</p>
+	<p> <span id="fourth"> 애로우 함수 </span>
+		<input type="button" value="확인" onclick="javascript:fourth()"/>
+	</p>
+</body>
+</html>

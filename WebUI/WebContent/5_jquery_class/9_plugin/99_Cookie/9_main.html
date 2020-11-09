@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>메인페이지</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+	//강의시간에 사용
+	//if(! $.cookie('Promotion') !='no' )
+	if(! $.cookie('Promotion')){ // promotion이라는 키값을 가진 쿠키가 존재하지 않는다면 창을 염
+		window.open("9_promotion.html","","width=400, height=360");	
+	}
+</script>
+</head>
+<body>
+<h2>우리 메인 페이지입니다. </h2>
+</body>
+</html>

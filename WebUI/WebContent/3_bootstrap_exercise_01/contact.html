@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ko-kr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Haitai </title>
+
+    <!-- Bootstrap -->
+    <link href="./css/nomalize.css" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/animate.css" rel="stylesheet">
+    <link href="./css/jquery.fancybox.css" rel="stylesheet">
+	<style>
+		img{
+			margin: auto;
+		}
+		body header.content1{
+			background: linear-gradient( to right, #F23492, #FFFFFF );
+		}
+		body footer.content3{
+			background: linear-gradient( to right, #FFFFFF, #F23492 );
+		}
+		div.col-md-7 form.form-horizontal div.form-group button.send_btn{
+			background: #F23492;
+			color : #FFFFFF;
+			border-radius: 12px;
+		}
+	</style>
+  </head>
+<body id="home" data-spy="scroll" data-target="#navbar-scroll" data-offset="50">
+  <div class="container-fluid"  >     
+        <div class="container">
+          <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-scroll">
+            <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html"><img src="./haitai/logo.PNG" alt="haitai"> </a>
+            </div>
+           
+            <!-- 네비게이션 메뉴 -->
+            <div class="collapse navbar-collapse navbar-right navbar-1-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html"> 홈 </a></li>  
+                <li><a href="about.html"> 회사소개 </a></li>  
+                <li><a href="portfolio.html"> 제품소개 </a></li>  
+                <li><a href="contact.html">고객문의 </a></li>                  
+              </ul>
+            </div>
+            </div><!-- /.navbar-collapse -->
+          </nav>
+        </div>   
+	<div id="contact">
+		<header class="content1">
+			<div class="container">
+				<h1>
+					<small>고객의 소리</small>
+				</h1>
+				<h3><small>늘 열린 마음으로 세상을 바라보는 해태제과 고객의 소리입니다.</small></h3>
+			</div>
+		</header>
+	</div>
+	<div class="container contact">
+		<div class="row">
+			<div class="col-md-7">
+				<form class="form-horizontal" role="form" id="ajax-contact-form"
+					action="#">
+					<div class="form-group">
+						<input type="text" class="form-control required" name="name"
+							placeholder="이름" title="Name">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control required" name="email"
+							placeholder="이메일" title="Email">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="subject"
+							placeholder="제목" title="Subject">
+					</div>
+					<div class="form-group">
+						<textarea name="message" class="form-control required"
+							id="message" title="Message" placeholder="문의내용" rows=5></textarea>
+					</div>
+					<div class="form-group">
+						<button class="send_btn" type="submit">전 송</button>
+						<button type="reset" class="send_btn">재설정</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4  col-md-offset-1 contact_info wp5 delay-05s">
+				<p>
+					<span class="glyphicon glyphicon-phone"> </span>  080-233-6677 (수신자 부담)
+				</p>
+				<p>
+					<span class="glyphicon glyphicon-inbox"> </span> <a href="mailto:ugpapa@gmail.com">haitaics@ht.co.kr </a>
+				</p>
+				<p>
+					<span class="glyphicon glyphicon-copyright-mark"> </span>해태재과
+				</p>
+			</div>
+		</div>
+	</div>
+     <footer class="content3">
+       <div class="container">
+         copyright&#169; 2015 HAITAI CONFECTIONERY & FOODS CO.LTD ALL RIGHTS RESERVED
+       </div>
+     </footer>
+  
+	</div> <!--  fluid container 끝 -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap-hover-dropdown.js"></script>
+    <script src="./js/animatescroll.min.js"></script>
+    <script src="./js/simpleparallax.js"></script>
+    <script src="./js/waypoints.min.js"></script>
+    <script src="./js/jquery.fancybox.js"></script>
+    <script>
+       $('.carousel').carousel()
+       $('.carousel2').carousel({interval: 3000 }) 
+
+        /***************** Waypoints ******************/
+          $('.wp1').waypoint(function() {
+            $('.wp1').addClass('animated fadeInLeft');
+          }, {
+            offset: '75%'
+          });
+          $('.wp2').waypoint(function() {
+            $('.wp2').addClass('animated fadeInUp');
+          }, {
+            offset: '75%'
+          });        
+          $('.wp3').waypoint(function() {
+            $('.wp3').addClass('animated fadeInDown');
+          }, {
+            offset: '55%'
+          });
+          $('.wp4').waypoint(function() {
+            $('.wp4').addClass('animated fadeInDown');
+          }, {
+            offset: '75%'
+          });
+          $('.wp5').waypoint(function() {
+            $('.wp5').addClass('animated fadeInRight');
+          }, {
+            offset: '75%'
+          });
+//*  */
+      $(document).ready(function() {
+        $(".fancybox").fancybox({
+          openEffect  : 'none',
+          closeEffect : 'none'
+        });
+      });
+
+
+    </script>    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 변수와 범위</title>
+	<script>
+
+		// 글로벌 변수와 지역변수
+		// var를 사용하지 않으면 글로벌 변수가 됨
+
+		var scope = '글로벌변수';
+		function getValue(){
+			document.write('0>' + scope + "<br/>"); //undefined가 나옴 -> 이미 지역변수가 있다는 걸 인지해서?.. -> 14라인을 주석처리하면 정상적으로 글로벌 변수가 나옴
+			var scope = '지역변수';
+			return scope;
+		}
+		document.write('1>' + getValue() + "<br/>");
+		document.write('2>' + scope + "<br/>");
+
+		//javascript 에서의 지역변수 : 함수 블럭 안에서의 변수만을 이야기함
+
+		if(true){
+			var i = 100;
+		}
+		document.write('i=' + i + "<br/>");
+
+		for(var j=0; j<3; j++){}	// for문 안에서 선언해둔 변수도 글로벌 변수지만 덮어쓰기가 가능해서 문제를 일으키지 않음
+		for(var j=0; j<3; j++){}
+
+		var j=1;
+		var j=2;
+//		let j=1;
+//		let j=2;
+		document.write("j=" + j + "<br/>");
+
+	</script>
+</head>
+
+<body>
+
+  
+ </body>
+</html>

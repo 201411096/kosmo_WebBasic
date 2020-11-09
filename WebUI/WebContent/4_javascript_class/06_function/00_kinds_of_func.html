@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 함수 4가지</title>
+	<script>
+	// 1. function 명령
+	// 매개변수에 자료형을 작성하면 안됨 ex function trinagle(var base, var height) -> x
+	// 반환형에도 자료형을 명시하지 않음 ex function var triangle(base, height) -> x
+
+/*
+	function triangle(base, height){
+		return base*height/2;
+	}
+	document.write('삼각형의 면적1 = ' + triangle(3,4) + "<br/>");
+*/
+
+	// 2. 함수리터럴( 함수도 변수의 값이다. )   * literal(리터럴) : 변수의 값 <->constant..?
+
+/*
+	var triangle = function(base, height){	// 1번 부분을 그대로 긁어오지만 함수의 이름은 앞에 작성되어 있으니 등호 뒷부분에서 생략
+		return base*height/2;
+	};
+	document.write('삼각형의 면적2 = ' + triangle(4,4) + "<br/>");
+*/
+
+	//-----------------------------------------------------------------------------------
+	// 3. Function 생성자
+	
+/*
+	// Function() -> 클래스 객체 생성하는 것과 같은 개념
+	var triangle = new Function('base', 'height', 'return base*height/2');	
+	document.write('삼각형의 면적3 = ' + triangle(4,5) + "<br/>");	
+*/
+	
+	// 4. 애로우함수
+	
+/*	
+	var triangle = (base, height)=>{return base*height/2;};
+	document.write('삼각형의 면적4 = ' + triangle(6,5) + "<br/>");	
+*/
+
+	</script>
+</head>
+
+<body>
+
+  
+ </body>
+</html>

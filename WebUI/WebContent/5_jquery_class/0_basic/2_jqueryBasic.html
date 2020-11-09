@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8"/>
+	<title> 첫 연습 </title>
+	<style>
+		.active {
+			border : 3px solid red;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="../lib/jquery-3.5.1.min.js"></script> -->
+	<script type="text/javascript">
+		$(function(){	//DOM이 준비된 후에 함수를 실행함
+			// 1.
+			$('.man').css({'background':'lightblue'}); 						//class가 man인 요소들의 background를 lightblue로 변경함
+			$('.woman').css({'color':'red', 'background':'yellow'}); 		//class가 woman인 요소들의 background를 yellow로 변경하고 글자색을 빨간색으로 변경
+			// 2.
+			var box = $('.inputText');
+
+
+			box.focus(function(){				//box 요소에 focus가 갔을 경우
+				$(this).addClass('active');		//이벤트가 발생한 요소에 active라는 클래스를 추가함
+			});
+			box.blur(function(){				//box 요소에 focus가 사라졌을 경우
+				$(this).removeClass('active');	//이벤트가 발생한 요소에 active라는 클래스를 제거함
+			});
+
+/*			
+			----- 왜 안되는지 모름 ->.each를 써야 되는듯..?  -----
+
+			for(var i=0; i<box.length; i++){
+				console.log("box "+i+" 번쨰 요소 " + box[i]);
+				box[i].focus(function(){
+					box[i].addClass('active');
+				});
+				box[i].blur(function(){
+					box[i].removeClass('active');
+				});
+			};
+*/
+			
+			// 3.
+			// jquery 함수 : setter 와 getter 동일
+			// 함수(인자) :setter / 함수() : getter
+			console.log( $('#divText').text() );	// .text() -> 인자가 없음 -> getter 역할
+			$('#divText').text('<img src="images/grim.jpg">');	// .text(args) -> 인자가 있음 -> setter 역할
+			$('#divHtml').html('<img src="images/grim.jpg">');
+			$('#divEmpty').empty(); // hide와 다르게 태그 사이의 내용이 아예 사라짐
+
+			// 속성값 얻어오거나 지정함수 : attr();
+			// 	ㄴ 사용 예시 : attr(args1, args2);
+			$('#changeGrim').attr('src','images/cat.jpg');
+
+			// 4. 폼 안의 요소의 입력이나 선택 값들을 getter / setter : val() <-> js에서는 .value로 사용했었음
+			$('#tf').val('이름을 입력하세요');
+			$('#ta').val('작성중');
+			$('#sel').val('incheon');
+			$('#sel_m').val(['seom1', 'seom3']); //여러가지를 선택할 경우에 배열로 선택
+			$('#check').on('click', function(){
+				$('#result').html(	$('#tf').val() + " " + $('#ta').val() + " " + $('#sel').val() + " " + $('#sel_m').val()	);
+			});
+			$('#init').on('click', function(){
+				$('#tf').val('');
+				$('#ta').val('');
+				$('#sel').val('');
+				$('#sel_m').val('');
+				$('#result').text('');
+			});
+
+			console.log( $('#tf').val() + $('#ta').val() + $('#sel').val() + $('#sel_m').html() );
+
+			var actor = $('#actor');
+			var tae = $('#tae');
+			var su = $('#su');
+			var bin = $('#bin');
+			//html의 구조를 변경 (형제 -> 자식)
+			actor.append(tae);
+			actor.append(su);
+			actor.append(bin);
+//			bin.appendTo(actor); //자식을 부모에게 붙이는 방식
+			actor.append('<div>한배우</div>');
+
+			var n = $('<div/>'); // <div/> -> <div> </div> 축약형
+			n.text('두배우');// <div>와</div>사이에 '두배우'값을 넣음
+			actor.append(n);
+
+			$('.data').each(function(){	//data 클래스를 가진 요소들에 각각 이벤트리스너를 걸어줌
+				$('.this').on('click', function(){
+				console.log( $(this).text() );
+				});	
+			});
+			
+		});
+	</script>
+</head>
+<body>
+	<!--  1 -->
+	<ul>
+		<li class="man">김수현</li>
+		<li class="woman">김희애</li>
+		<li class="woman">송혜교</li>
+		<li class="man">하정우</li>
+		<li class="woman">김태희</li>
+	</ul>
+	<!-- 2 -->
+	<input type="text" class="inputText"/>
+	<input type="text" class="inputText"/>
+	<input type="text" class="inputText"/>
+	
+
+	<!-- 3 -->
+		<div id="divText">여기에 글씨를</div>
+		<div id="divHtml">여기에 그림을</div>
+		<div id="divEmpty">여기를 비움</div>
+		<p><img src="images/puppy.jpg" id='changeGrim'></p>
+		
+	<!-- 4 -->	
+		<p>
+		<input id="tf" type="text" size="20" />
+		<textarea id="ta" rows="3" cols="20"></textarea>
+		<select id="sel">
+			<option value="seoul">서울</option>	<!-- option에 value 값 없어도 됨 -->
+			<option value="busan">부산</option>
+			<option value="masan">마산</option>
+			<option value="incheon">인천</option>
+		</select>
+		<select id="sel_m" multiple="multiple">
+			<option value="seom1">제주도</option>
+			<option value="seom2">울릉도</option>
+			<option value="seom3">독도</option>
+			<option value="seom4">거제도</option>
+		</select>
+		<input type='button' id='check' value='확인'/>
+		<input type='button' id='init' value='초기화'/> <!--  [과제] 클릭시 값 지정하려면  -->
+		<div id='result'></div>
+		</p>
+		
+	<!-- 5 -->
+		<div id="actor">배우</div>
+		<div id="tae">김태희</div>
+		<div id="su">김수현</div>
+		<div id="bin">현빈</div>
+		<!-- [ 과제 ] 동적 테이블 만들기  -->
+
+	<!-- 6 -->
+		<div class="data">이름</div>
+		<div class="data">직업</div>
+		<div class="data">나이</div>
+
+	
+</body>
+</html>

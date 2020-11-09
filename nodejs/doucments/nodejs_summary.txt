@@ -1,0 +1,163 @@
+----------------------------------------
+nodejs
+	ㄴ nodejs 설치 확인
+		ㄴ node -v
+	ㄴ nodejs 서버 실행
+		ㄴ node filename
+	ㄴ nodejs 서버 종료
+		ㄴ ctrl + c
+----------------------------------------
+visual studio code
+	ㄴ 함수 설명 보기
+		ㄴ f12
+		ㄴ alt + f12
+		ㄴ 함수 인자 설명에서 callback함수의 인자에 어떤 것이 들어가야 하는지도 나옴
+----------------------------------------
+nodejs의 모듈
+	ㄴ 모듈 사용방법
+		ㄴ require(modulename)
+	ㄴ 사용예시
+		ㄴ require('http')
+		ㄴ require('fs')
+		ㄴ require('url')
+	ㄴ 모듈 종류
+		ㄴ http
+		ㄴ fs
+			ㄴ filesystem의 약자로 파일 처리와 관련된 모듈
+		ㄴ url
+----------------------------------------
+__dirname, __filename
+	ㄴ __dirname : 디렉토리 이름(디렉토리 위치 포함)
+	ㄴ__filename : 파일 이름(디렉토리 위치 포함)
+----------------------------------------
+웹 서버 객체 생성
+	ㄴ http 요청마다 createserver에 전달된 함수가 한번씩 호출됨
+	ㄴ 예시_01
+		const http = require('http');
+
+		const server = http.createServer((request, response) => {
+		  //작업이 진행되는 곳
+		});
+	ㄴ 예시_02
+		var http = require('http');
+		var fs = require('fs');
+		var app = http.createServer(function(request,response){
+		    var url = request.url;
+		    if(request.url == '/'){
+		      url = '/index.html';
+		    }
+		    if(request.url == '/favicon.ico'){
+		      return response.writeHead(404);
+		    }
+		    response.writeHead(200);
+		    response.end(fs.readFileSync(__dirname + url));
+ 		});
+----------------------------------------
+사용할 포트 번호 지정
+	ㄴ 사용방법
+		ㄴ servervariablename.listen(portnumber)
+	ㄴ 사용예시
+		var app = http.createServer(..){..}
+		app.listen(3000) // 3000 포트 사용
+----------------------------------------
+url
+	ㄴ 구성
+		ㄴ protocol://host(domain):port/path?query string
+			ㄴ port
+				ㄴ default값(80)을 사용할 경우에는 생략 가능
+			ㄴ query string
+				ㄴ request.url에 파싱해야됨
+----------------------------------------
+string
+	ㄴ string 변수 사용시 줄바꿈이 필요한 경우 줄바꿈의 끝부분과 그 다음줄 첫부분에 '\'가 필요함
+		ㄴ 단순히 코드상에서만 줄바꿈이 이루어지고 실제 출력은 똑같이 나옴
+		ㄴ 줄바꿈도 하고 싶다면..
+			ㄴ '\' 앞부분에 \n을 하나씩 추가해줘야됨
+	ㄴ ``(backtick)(grave accent)을 사용해서 template literal을 사용할 수 있음
+	ㄴ 차이점 예시
+		var name = 'k8805';
+		var letter = 'Dear '+name+' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '+name+' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa egoing qui officia deserunt mollit anim id est laborum. '+name;
+		var letter = `Dear 
+
+		${name} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ${name} Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa egoing qui officia deserunt mollit anim id est laborum. ${name}`;
+		console.log(letter);
+----------------------------------------
+Template literals
+	ㄴ "", '' 대신 백틱(``)(grave accent)을 사용
+	ㄴ 플레이스 홀더를 이용한 표현식을 사용 가능
+		ㄴ 사용방법
+			ㄴ ${expression}
+		ㄴ 사용예시
+			var queryData = url.parse(requestUrl, true).query;
+			...
+			<title>WEB1 - ${queryData.id}</title>
+----------------------------------------
+fs
+	ㄴ filesystem 관련 모듈
+		ㄴ 사용 방법
+			ㄴ var fs = require('fs')
+	ㄴ readfile()
+		ㄴ 파일 읽기
+		ㄴ 사용 방법
+			ㄴ .readFile(filename, encoding, function(err, data){})
+		ㄴ 사용예시
+			fs.readFile('sample.txt', 'utf-8', function(err, data){
+			    console.log(data);
+			});
+	ㄴ readdir()
+		ㄴ 파일 목록 읽기
+		ㄴ 사용 방법
+			ㄴ fs.readdir(path, [, options], callback) // callback -> 함수
+		ㄴ 사용 예시
+			fs.readdir(testFolder, function(error, filelist){
+			    console.log(filelist);
+			});
+
+----------------------------------------
+process 객체
+	ㄴ 모듈 사용 방법
+		ㄴ process = require('process')
+	ㄴ nodejs console input parameters
+		ㄴ 사용예시
+			process = require('process'); // process 모듈 사용
+
+			var processargs = process.argv;
+			console.log(processargs);
+			console.log(processargs[2]);
+----------------------------------------
+rseponse
+	ㄴ response.writehead()
+		ㄴ 응답헤더 작성
+	ㄴ response.end()	
+		ㄴ 응답본문 작성
+	ㄴ 사용예시_01
+		ㄴ 파일 전송이 성공적인 경우
+			response.writeHead(200); // 파일 전송이 성공
+			response.end(template); // template은 html내용이 담긴 Template literals
+	ㄴ 사용예시_02
+		ㄴ 파일 전송이 실패한 경우(ex) 해당파일이 존재하지 않는 경우)
+			response.writeHead(404); // 파일 전송이 실패
+			response.end('not found')  // not found 부분은 html을 구성하는 부분(오류페이지를 나타내는..)
+----------------------------------------
+pm2
+	ㄴ process manager for Node.js
+	ㄴ 설치방법
+		ㄴ npm install pm2 -g
+	ㄴ vscode의 터미널에서는 사용이 안됨
+		ㄴ cmd 관리자모드로 사용해야..
+	ㄴ 실행방법_01
+		ㄴ pm2 start filename.js
+		ㄴ 옵션
+			ㄴ --watch
+				ㄴ 소스를 고친후 파일을 중단했다가 다시 실행할 필요가 없음
+				ㄴ 사용방법
+					ㄴ pm2 start filename.js --watch
+	ㄴ 로그파일 확인
+		ㄴ watch 옵션 사용시 에러가 바로 보여지지 않기 때문에 사용
+		ㄴ pm2 log
+	ㄴ 프로세스 종료 방법
+		ㄴ pm2 stop filename.js
+	ㄴ 상태 확인
+		ㄴ pm2 status
+		ㄴ pm2 monit
+			ㄴ q, ctrl-c 로 나감

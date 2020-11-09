@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> es6 인수 </title>
+<script>
+ 
+	// @ 1. 인수의 기본값(default) 지정
+   	function multiple( first, second=100 ) //인자의 기본값 지정이 가능 -> 인자를 부족하게 받았을 경우에 정상적으로? 실행이 되도록 도움
+	{
+		return first * second;
+	}
+	document.writeln('곱은 ' +  multiple( 3, 4 ) + '<br/>'  );
+	document.writeln('곱은 ' +  multiple( 3, 4, 5 ) + '<br/>'  );
+	document.writeln('곱은 ' +  multiple( 3 ) + '<br/>' ); 
+	
+	// @ 2. 가변길이 인수(...)
+	function sum(... su){
+		var hap =0;
+		for(var i of su){ // in과 of가 다름 -> of를 사용해야 정상적이 결과가 나옴(in은 index들, of는 속학 값들)
+			hap+=i;
+			console.log("i확인 :" + i);
+		}
+		return hap;
+	}
+
+	document.writeln(sum(1,2,3) + "<br/>");
+	document.writeln(sum(1,2,3,4) + "<br/>");
+	document.writeln(sum(1,2,3,4,5,6,7,8,9) + "<br/>");
+
+/*	function sum(su){
+		var hap=0;
+		for(var i=0; i<su.length; i++){
+			hap+=su[i];
+		}
+		return hap;
+	}
+	var arr1 = [1,2,3];
+	var arr2 = [1,2,3,4];
+	var arr3 = [1,2,3,4,5,6,7,8,9];
+	document.writeln(sum(arr1) + "<br/>");
+	document.writeln(sum(arr2) + "<br/>");
+	document.writeln(sum(arr3) + "<br/>");*/
+ 
+</script>
+</head>
+<body>
+
+</body>
+</html>

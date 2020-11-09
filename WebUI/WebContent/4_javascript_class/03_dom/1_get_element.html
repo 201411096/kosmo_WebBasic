@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM에서 노드 검색 방법</title>
+    <script type="text/javascript">
+
+      window.onload = function () {
+          document.getElementById('btn').onclick = function(){
+        // 1. ID값으로 노드 얻어오기
+/*            var name = document.getElementById('name');
+              var result = document.getElementById('result');
+              result.innerHTML = '안녕, ' + name.value;*/
+              
+              /***** InnerHTML *****/
+              /*The innerHTML property can be used to get or change any HTML element, including <html> and <body>.*/
+              /*The innerHTML property is useful for getting or replacing the content of HTML elements.*/
+              /* innerHTML : 태그 안에 내용을 입력 ex) <div id="result"></div> -> <div id="result">안녕, +name.value </div> */
+              
+        // 2. 클래스명으로 노드 얻어오기
+/*            var b = document.getElementsByClassName('cname'); 
+              var result = document.getElementById('result');
+              result.innerHTML = '안녕2, ' + b[0].value;  */
+              
+              /* class는 중복이 가능하기 때문에 여러가지를 가져옴 이 경우 var b는 배열을 받게 됨 */
+              /* 요소가 하나뿐이여도 배열로 받아야되서 b.value가 아닌 b[0].value로 사용해야함 */
+              
+        // 3. 태그명으로 노드 얻어오기 
+/*            var c = document.getElementsByTagName('input');
+              alert(c.length);
+              for(var i=0; i<c.length; i++){
+                if(c[i].type=='text' && c[i].value==''){
+                    alert( c[i].text + c[i].id + c[i].class + c[i].name + '필수항목입니다.');
+                    return;
+                }            
+              }*/
+            // 4. 현재위치에서 상대적인 관계로 노드 얻어오기
+              var d = document.getElementById('label');
+              var children = d.childNodes;
+              //alert(childs.length);
+              /* 6개인줄 알았는데 7개가 나옴 */
+              for(var i=0; i<children.length; i++){
+                  if(children[i].nodeType == 1 && children[i].value==''){   //nodetype==1 ->tag가 있는 자식들만 골라냄
+                      alert(children[i].name + '필수 항목입니다.');
+                      return;
+                  }
+              }
+              
+            /*
+                nodeType 프로퍼티의 반환값
+                1 -	요소 노드
+                2 - 속성 노드
+                3 - 텍스트 노드
+                4 - CDATA 섹션
+                5 - 실제참조 노드
+                6 - 셀제선언 노드
+                7 - 처리명령 노드
+                8 - 코멘트 노드
+                9 - 문서 노드
+                10 - 문서형선언 노드
+                11 - 문서의 단편 (fragment)
+                12 - 기법선언 노드
+            */
+
+            // 5. DOM 구조는 아니지만 폼의 요소를 찾는 방법
+            // css에서는..
+            // 아이디 : #       클래스 : .
+            var name = document.querySelector('.cname'); //name이라는 아이디값을 찾음
+                    // document.querySelectorAll();
+            var result = document.querySelector('#result');
+            result.innerHTML = '<a href="http://daum.net">' + name.value + '</a>';
+        }
+      }
+    </script>
+</head>
+<body>
+	<!-- 1 -->
+	<form name="fm">
+		<div id='label'>
+		 이름 : <input type="text" id="name" class="cname" name="name" size="15" />
+		 학과 : <input type="text" id="dept" name="dept" size="15" /> 
+		 학교 : <input type="text" id="univ" name="univ" size="15" />
+		 </div>
+		<input id="btn" type="button" value="버튼" />
+		<div id="result"></div>
+	</form>
+</body>
+</html>

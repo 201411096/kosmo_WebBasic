@@ -1,0 +1,10 @@
+﻿----------------------------------------
+Singleton 패턴
+	ㄴ 1_1. synchronized
+	ㄴ 1_2. DCL(double-checked-locking)
+	ㄴ 1_3. volatile을 이용한 DCL(double-checked-locking)
+	ㄴ 2. static 초기화를 이용한 singleton 패턴
+	ㄴ 3. lazyholder singleton 패턴
+----------------------------------------
+references
+	ㄴ https://javaplant.tistory.com/21

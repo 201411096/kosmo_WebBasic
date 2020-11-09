@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>02_html5_list_연습</title>
+</head>
+<body>
+
+<h2>현재 이 페이지에서 출력</h2>
+	<img src="../images/sample/sensitive.jpg" alt="Italian Trulli">
+	<audio src="../media/Over_the_Horizon.mp3"></audio>
+	<audio controls>
+	  <source src="../media/Over_the_Horizon.mp3" type="audio/ogg">
+	Your browser does not support the audio element.
+	</audio>
+	<video width="320" height="240" controls>
+	  <source src="../media/kakaotalk_1584894240868.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+	<iframe src="01_html5_section.html" height="200" width="300"></iframe>
+
+
+<hr/>
+
+<!-- 상대경로 -->
+<ul>
+	<li><a href="../images/sample/sensitive.jpg"/>이미지파일(sensitive.jpg)</li>
+	<li><a href="../media/Over_the_Horizon.mp3" />음악파일</li>
+	<li><a href="../media/kakaotalk_1584894240868.mp4" />동영상파일</li>
+	<li><a href="01_html5_section.html">문서(01_html5_section.html)</li>
+	<!-- .하나는 자기폴더 ..은 부모폴더 -->
+</ul>
+<!-- 절대경로 -->
+<ul>
+	<li><a href="/WebUI/images/sample/sensitive.jpg"/>이미지파일(sensitive.jpg)</li>
+	<li><a href="/WebUI/media/Over_the_Horizon.mp3" />음악파일</li>
+	<li><a href="/WebUI/media/kakaotalk_1584894240868.mp4" />동영상파일</li>
+	<li><a href="/WebUI/01_html5_section.html">문서(01_html5_section.html)</li>
+</ul>
+</body>
+</html>

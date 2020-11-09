@@ -1,0 +1,6 @@
+﻿MVC
+ㄴ model1 구조
+	ㄴ Client <-> JSP <-> Class
+ㄴ model2 구조
+	ㄴ Client -> Servlet <-> Class
+	ㄴ Servlet -> JSP -> Client

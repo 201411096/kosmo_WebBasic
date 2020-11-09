@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- id, class는 client쪽에서 찾을때 name은 server쪽에서 찾아갈떄 -->
+<!-- id와 class의 차이점으로는 id는 유일한 식별자  -->
+
+<form action='' method='post'>	<!-- default로 action='#'이 들어가 있음  -->
+<!-- url에 보이는 기본 방식->get url에 보이지 않는 방식 post -->		
+	<fieldset>	<!--html5에만 있음-->
+		<legend>로그인 정보</legend> <!-- 테두리에 섞여있음 -->
+		<ol>
+			<li>
+				<label for='id'>아이디</label>			<!-- 옆에 있는 글씨에 for를 이용해서 옆에 input type과  같다는 것을 알려주기  -->
+				<input type='text' id='id' name='id'>
+			</li>
+			<li>
+				<label for='password'>비밀번호</label>
+				<input type='password' id='password' name='password'>
+			</li>
+			<li>
+				<label for='passwordcheck'>비밀번호 확인</label>
+				<input type='passwordcheck' id='passwordcheck' name='password'>
+			</li>
+			<li>
+				<label for='position'>회원 등급</label>
+				<input type='position' id='position' name='position' value='준회원'>
+			</li>
+		</ol>
+	</fieldset>
+	
+	<fieldset>	<!--html5에만 있음-->
+		<legend>개인 정보</legend> <!-- 테두리에 섞여있음 -->
+		<ol>
+			<li>
+				<label for='name'>이름</label>
+				<input type='text' id='name' name='name' placeholder='5자미만 공백없이'>
+			</li>
+			<li>
+				<label for='email'>메일 주소</label>
+				<input type='email' id='email' name='email' placeholder='abcd@domain.com'>
+			</li>
+			<li>
+				<label for='tel'>연락처</label>
+				<input type='text' id='tel' name='tel' pattern='pattern="d{2,3}-\d{3,4}-\d{4}"/'>
+			</li>
+			<li>
+				<label for='birthday'>생일</label>
+				<input type='date' id='birthday' name='birthday'>
+			</li>
+		</ol>
+	</fieldset>
+	
+	<fieldset>
+		<legend>코딩 숙련도(상, 중, 하)</legend>
+		<ol>
+			<li>
+				<input type="range" min="0" max="2" step="1" value="1"/>
+			</li>
+		</ol>
+	</fieldset>
+	
+	<fieldset>
+		<input type='submit' value='제출'>
+	</fieldset>
+	
+</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button id='kakaologin'> 카카오 로그인 </button>
+</body>
+
+<script src="./js/kakao.js"></script>
+<script>
+Kakao.init('app key');
+console.log(Kakao.isInitialized());
+Kakao.Auth.createLoginButton({
+	  container: '#kakaologin',
+	  success: function(response) {
+	    console.log(response); // response에 access_token이 담겨져있음
+	    Kakao.Auth.setAccessToken(response.access_token);
+	    console.log(response.access_token);
+	  },
+	  fail: function(error) {
+	    console.log(error);
+	  },
+	});
+Kakao.API.request({
+    url: '/v2/user/me',
+    success: function(response) {
+        console.log(response);
+    },
+    fail: function(error) {
+        console.log(error);
+    }
+});
+
+</script>
+</html>

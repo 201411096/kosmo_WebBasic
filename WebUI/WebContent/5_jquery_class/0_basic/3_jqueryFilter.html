@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery filter</title>
+
+	<!--4. class 속성제어 -->
+	<style type="text/css">
+		.bg { background : yellow; }
+		.border { border : 3px dotted red; }
+		.borderRed { border : 3px dotted red; }
+		.borderBlue { border : 3px dotted blue; }
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="../lib/jquery-3.5.1.min.js"></script> -->
+	<script type="text/javascript">
+		$(function(){ // js에서 window.onload와 같은 역할
+			/*
+			$('li').css('border', '1px solid red'); //$('li').css({'border':'1px solid red'});
+		
+			// li 중 첫번쨰 요소
+			$('li:first').css('border', '1px solid blue'); // filtering 사용
+			$('li').first().css('border', '1px solid blue'); //find 함수
+			
+			// li 중 짝수 요소
+			$('li:even').css('background-color', 'yellow');
+			
+			// li 중 네번쨰 요소
+			$('li:eq(3)').css('color', 'blue' );
+			
+			// li 중 세번쨰보다 작은 요소들
+			$('li:lt(2)').css('color', 'red');
+			
+			// li 중 첫번쨰를 제외한 요소들
+			$('li:not(:eq(0))').css('background-color', 'aliceblue'); // ***** not()안에 또 그에 해당하는 조건을 넣어줘야됨
+			
+			// li 중 '튀김'을 포함한 것들
+			$("li:contains('튀김')").css('color', 'green');
+			
+			// 각 그룹별 첫번째 li 요소
+			//$("li:nth-child(1)").css('background-color', 'green'); // ***** nth-child는 1부터 시작
+			$("li:nth-child(1)").css({'background-color':'green', 'color':'white'}); //css 여러가지를 사용
+			// 각 그룹별 첫번째 li 요소를 찾는 다른 방법 <-> eq와 다른점
+			$('ul').find('li:first').css('border', '1px solid blue');
+			$('ul').find('li:first').css({'border':'1px solid white'});
+			*/
+			
+			// filter와 함수
+			// '어묵'을 포함한 요소의 부모 찾기
+			//$("li:contains('어묵')").parent().css('background-color', 'green');
+			//$("li:contains('어묵'):parent").css('background-color', 'green'); //생각한것과 다르게 나옴
+			
+			//$('li:odd').addClass('bg');
+			
+			// li 요소에 마우스가 올라가면 border 클래스를 적용하고 마우스가 내려가면 border 클래스를 제거하기
+/* 			
+			$('li').hover(function(){
+				$(this).addClass('border'); //이벤트가 발생한 애들에 한해서만 border클래스 추가
+			}, function(){
+				$(this).removeClass('border');
+			});
+*/
+			// li 요소에 클릭시 border 클래스를 적용
+/* 			$('li').click(function(){
+				$(this).addClass('border');
+			}); */
+/* 			$('li').click(function(){
+				$(this).toggleClass('border'); //스위치처럼 껏다켰다하는 개념(add remove를 반복)
+			}); */
+/*  		$('li').on('click', function(){
+				$(this).toggleClass('border');
+			}); */
+			
+			/*
+			1. 튀김을 포함한 요소에 백그라운드 색 변경			
+			2. 어묵 밑에 자식 요소들만 css의 border 클래스 적용			
+			3. 어묵 밑에 자식을 제외하고 마우스 올리면 css의 bg 클래스 적용하고 마우스 내리면 클래스 제거			
+			*/
+			// 1.
+			//$("li:contains('튀김'):gt(0)").css({"background-color":"aliceblue"});
+			// 2.
+			//$("li:contains('어묵')").children().addClass('border');
+			
+			// 3.
+			$("li:not(li:contains('어묵'):gt(0))").hover(function(){
+				console.log('a');
+				$(this).addClass('bg');
+			}, function(){
+				console.log('a');
+				$(this).removeClass('bg');
+			})
+		});
+	</script>
+
+</head>
+<body>
+		<h1>제이쿼리 시작</h1>
+		<h2>내가 좋아하는 음식 </h2>
+		<ul id="food">
+			<li>떡볶이</li>
+			<li>어묵</li>
+			<li>
+				<ul>
+					<li>어묵국</li>
+					<li>어묵말이</li>
+					<li>어묵튀김</li>
+				</ul>
+			</li>
+			<li>닭튀김</li>
+			<li>돼지튀김</li>
+			<li>소튀김</li>
+			<li>구두튀김</li>
+		</ul>
+		<!-- 2. 추가하고 다시 확인 -->
+		<h2>내가 좋아하는 술</h2>
+		<ul>
+			<li>와인</li>
+			<li>맥주</li>
+			<li>막걸리</li>
+			<li>소주</li>
+		</ul>
+	<div id="result"></div>
+</body>
+</html>

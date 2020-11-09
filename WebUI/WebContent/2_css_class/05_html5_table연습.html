@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 테이블 꾸미기 연습 </title>
+
+	<style type="text/css">
+	/*
+		1. 테이블의 테투리
+		2. 테이블의 제목칸을 눈에 띄게
+		3. 테이블의 짝수줄은 노랑, 홀수줄은 연두
+		4. 테이블의 마우스가 올라가면 올라간 행만 눈에 띄는 색으로 
+	*/
+		/* 우선 순위 문제 때문에 hover효과를 줄 떄에  */
+
+		table.data{
+			border : 1px solid green;
+		}
+		table.data thead tr{
+			background : lime;
+			color : green;
+		}
+		tr:nth-child(odd){
+			background : green;
+		}
+		tr:nth-child(even){
+			background : yellow;
+		}
+/* 		table.data tbody tr:nth-child(odd){ */
+/* 			background : green; */
+/* 		} */
+/* 		table.data tbody tr:nth-child(even){ */
+/* 			background : yellow; */
+/* 		} */
+		table.data tr:hover{
+			background : black;
+		}
+
+
+	</style>
+
+</head>
+<body>
+
+<div id="celebs">
+        <h2 class="heading"> 우리 스타 보기</h2>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>이름</th>
+              <th>직업</th>
+              <th>거주지</th>             
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>203A</td>
+              <td>샤이니</td>
+              <td>가수</td>
+              <td>용인</td>
+            </tr>
+            <tr>
+              <td>141B</td>
+              <td>소녀시대</td>
+              <td>가수</td>
+              <td>부산</td>
+            </tr>
+            <tr>
+              <td>2031</td>
+              <td>김수현</td>
+              <td>배우</td>
+              <td>뉴욕</td>
+            </tr>
+            <tr>
+              <td>007F</td>
+              <td>국카스텐</td>
+              <td>가수</td>
+              <td>마산</td>
+            </tr>
+            <tr>
+              <td>8A05</td>
+              <td>김태희</td>
+              <td>배우</td>
+              <td>서울</td>
+            </tr>
+            <tr>
+              <td>6636</td>
+              <td>송혜교</td>
+              <td>배우</td>
+              <td>런던</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</body>
+</html>

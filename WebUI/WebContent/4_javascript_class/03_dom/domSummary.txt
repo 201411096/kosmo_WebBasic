@@ -1,0 +1,38 @@
+1. DOM / BOM
+	ㄴ DOM - Document Object Model
+	ㄴ BOM - Browser Object Model
+
+2. 노드 추가 삭제
+	ㄴ 요소 노드 추가 : document.createElement
+	ㄴ 텍스트 노드 추가 : document.createTextNode
+	ㄴ 속성 노드 추가 : document.createAttribute
+	ㄴ 노드에 추가 : 요소노드.appendChild(추가하는 노드) ex)tr태그에 td를 붙일 경우에..
+	ㄴ 노드 삭제 : 노드.removeChild
+	ㄴ 노드에 자식이 있는지 확인 : 노드.hasChildNodes()
+	ㄴ 노드 replace : 노드.replaceChild(arg1, args2)
+		ㄴ ex) pic.replaceChild(img, pic.lastChild); //두번째 인자의 노드를 첫번쨰 노드로 변경
+
+3. event.target
+	ㄴ ..?
+	ㄴ for event delegation
+		ㄴ event delegation(이벤트 위임) : 비슷한 방식으로 여러 요소를 다뤄야 할 때 사용
+
+4. 폼 요소 접근
+	ㄴ 하나의 폼에 유일한 이름을 가진 요소의 값을 얻을 떄?
+		ㄴ document.폼이름.요소이름.value
+	ㄴ 여러개의 폼에 동일한 이름을 가진 요소가 여럿인 경우
+		ㄴ document.forms[0].elements[0].value
+		ㄴ document.forms['폼이름'].elements['요소이름'].value
+		ㄴ document['폼이름']['요소이름'].value
+
+5. 노드를 검색하는 방법
+	ㄴ ID명으로 document.getElementById('아이디명')
+	ㄴ 태그명으로 document.getElementsByTagNmae('태그명') ex) div? p? input?
+	ㄴ 클래스명으로 document.getElementsByClassName('클래스명')
+	ㄴ name으로 document.getElementsByName()
+	ㄴ 접근지정자
+		ㄴ document.querySelecotr('#아이디명')
+		ㄴ document.querySelecotr('.클래스명')
+	ㄴ 상대적인 위치관계로..
+		ㄴ parentNode, previousSibling, nextSibling, childNodes, firstChild, lastChild
+	

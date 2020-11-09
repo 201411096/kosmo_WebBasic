@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jquery event</title>
+	
+	<style type="text/css">
+		.bg { background : yellow; }
+		.border { border : 3px dotted red; }
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="../lib/jquery-3.5.1.min.js"></script> -->
+	<script type="text/javascript">
+		$(function() {
+			$('li').css('cursor', 'pointer');
+			//bind 와 one의 차이
+/*   			$('li').bind('click', function() {
+				$('#result').text( $(this).text() );
+			}); 
+			$('li').one('click', function() {
+				$('#result').text( $(this).text() );
+			});
+
+			$('li').click(function(e) {
+				console.log(e); // 콘솔로 이벤트 값을 확인
+			}); */			
+			
+			$('h1').on('click', function() {
+				var li = $('<li/>').text( new Date() ); //li 요소를 만들고 그 안에 날짜값을 담음
+				$('ul').append(li);
+			});
+			
+			$('ul').on('click', 'li', function() {
+				$('#result').text( $(this).text() );
+			});
+			
+/* 			$('li').bind('click', function() {
+				$('#result').text( $(this).text() );
+			}); */
+
+ 		});
+	</script>
+</head>
+<body>
+	<h1>제이쿼리 이벤트</h1>
+	 <ul>
+		<li>부에노스 아이레스</li>
+		<li>바르셀로나</li>
+		<li>리마</li>
+		<li>라파스</li>
+	 </ul>	
+	<div id="result"></div>
+</body>
+</html>

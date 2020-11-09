@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById('btn').onclick = function(){
+			 var s = document.getElementById('startDate').value;
+			 var e = document.getElementById('endDate').value;
+			 
+			 console.log(s + "/" + e);
+
+			 var sDate = new Date(s);
+			 var eDate = new Date(e);
+
+			 console.log(eDate - sDate); //date간 차이가 mils단위로 나옴
+			 console.log( (eDate - sDate)/(24*60*60*1000)); // 하루 단위 처리
+		}
+	}
+</script>
+</head>
+<body>
+		시작일 : <input type='date'  id='startDate'> 
+		~
+		종요일  : <input type='date' id='endDate'> 
+		
+		<input type='button' id='btn' value='여행일정'>
+</body>
+</html>

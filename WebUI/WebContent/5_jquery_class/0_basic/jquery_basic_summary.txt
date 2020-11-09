@@ -1,0 +1,166 @@
+﻿ --------------------------------------------------------------------------------
+ JQuery
+ 	ㄴ Write less, Do more
+ 	ㄴ 문법 간결
+ 	ㄴ 사용하기 쉬움
+ 	ㄴ 다양한 플러그인
+ 		ㄴ JQuery homepage -> plugin
+ 	ㄴ 브라우저 호환성 문제 해결
+ 	ㄴ UI, Mobile 확장 가능
+--------------------------------------------------------------------------------
+CDN (Content Delivery Network)
+	ㄴ 1. 프로젝트 내부의 파일 사용 시(인터넷 연결이 안될때에도 사용 가능)
+	ㄴ 2. CDN(Contents Delivery Network) 사용 시(클라이언트 입장에서는 성능 차이x -> 사용하지 않아도 서버쪽에 그만큼 접속해야됨)
+--------------------------------------------------------------------------------
+Script 기술 순서
+	ㄴ 외부 CSS -> 내부 CSS -> 외부 script -> 내부 script
+ --------------------------------------------------------------------------------
+ $의 의미
+ 	ㄴ $ sign is just an alias to jQuery()
+ 	ㄴ The $ is just a function. It is actually an alias for the function called jQuery
+ 	ㄴ The $() is the shorthand version of jQuery() used in the jQuery Library.
+--------------------------------------------------------------------------------
+DOM 이 사용될 준비가 될 때 함수를 실행하는..
+	ㄴ 	jQuery(function($)){
+			//Your code using failsafe $ alias here
+		}
+	ㄴ 	$(document).ready(function(){
+			//Document is ready
+		});
+	ㄴ 	$(function(){
+			//Document is ready
+		})
+--------------------------------------------------------------------------------
+ 이벤트 리스너의 두가지 방법
+ 	ㄴ As the .click() method is just a shorthand for .on( "click", handler ), detaching is possible using .off( "click" ).
+ 	ㄴ 부착예시 1
+ 		ㄴ 	var h = $('#here');
+ 			h.click(function(){
+				h.text('클릭하면 내용이 변경가능');
+			});
+	ㄴ 부착예시 2
+		ㄴ 	var h = $('#here');
+			h.on("click", function(){
+				h.text('클릭하면 내용이 변경가능');
+			});
+	ㄴ 탈착예시 1
+		ㄴ 	var h = $('#here');
+			h.off("click");
+--------------------------------------------------------------------------------
+이벤트 리스너 부착 함수 종류
+	ㄴ bind : This method only attaches events to elements which exist beforehand i.e. state of initialized document before the events are attached.
+	ㄴ live : This method attaches events not only to existing elements but also for the ones appended in the future as well but it won’t work in the case if selector condition is removed from the element.
+		ㄴ Note: The live() method was deprecated in jQuery version 1.7, and removed in version 1.9.
+	ㄴ on :This method attaches events not only to existing elements but also for the ones appended in the future as well. 
+		ㄴ The difference here between on() and live() function is that on() method is still supported and uses a different syntax pattern, unlike the above two methods.
+		ㄴ Syntax : $(selector).on(event, childSelector, data, function, map)		
+	ㄴ one : 이벤트가 한번 발생한 후에 없어짐
+--------------------------------------------------------------------------------
+CSS의 여러 속성을 변경하는 예시
+	ㄴ	$('#name').css({'background-color':'blue', 'color':'yellow', 'border':'3px solid red'});
+	ㄴ 속성과 값들을 ''(quotation)으로 감싸줘야 됨
+--------------------------------------------------------------------------------
+Jquery의 setter와 getter
+	ㄴ 함수 모양은 같음
+	ㄴ 함수에 인자가 들어가는지에 따라 사용용도가 변함
+	ㄴ 사용법 : 함수(인자) :setter / 함수() : getter
+	ㄴ 사용예시 	
+		ㄴ $('#divText').text('<img src="images/grim.jpg">');	// .text(args) -> 인자가 있음 -> setter 역할
+		ㄴ $('#divHtml').html('<img src="images/grim.jpg">');
+		ㄴ $('#divEmpty').empty(); // hide와 다르게 태그 사이의 내용이 아예 사라짐
+--------------------------------------------------------------------------------
+jquery 속성 값으로 찾는 방법
+	ㄴ ex) input type 혹은 name으로 찾는 방법
+		ㄴ $('form input[type=button]') : input type이 button인 경우...
+		ㄴ $('form[name=frm]') : form의 이름으로 찾는 경우
+--------------------------------------------------------------------------------
+attr() -> HTML 속성을 얻어오거나 지정하는 함수
+	ㄴ 사용법 : attr(args1, args2);
+	ㄴ 사용 예시 : $('#changeGrim').attr('src','images/cat.jpg'); - 2_jqueryBasic.html
+--------------------------------------------------------------------------------
+Form 안의 요소나 입력값들을 가져오거나 변경할 때
+	ㄴ val()함수 사용 <-> (Javascript에서는 .value로 사용했었음)
+	ㄴ 사용법 
+	ㄴ 사용예시
+		ㄴ	$('#tf').val('이름을 입력하세요');
+		ㄴ	$('#ta').val('작성중');
+		ㄴ	$('#sel').val('incheon'); 
+		ㄴ	$('#sel_m').val(['seom1', 'seom3']); //여러가지를 선택할 경우에 배열로 선택
+--------------------------------------------------------------------------------
+value에 인자를 넣는다고 해서 textarea값이 갱신되지 않음?... -> .text()의 인자로 바꾸고 싶은 값을 넣어줘야 됨
+	ㄴ javascript의 innerhtml -> .text(), .html(), .empty()
+	ㄴ 사용예시
+		ㄴ	$('#check').on('click', function(){
+				$('#result').text(	$('#tf').val() + " " + $('#ta').val() + " " + $('#sel').val() + " " + $('#sel_m').val()	);
+			});
+--------------------------------------------------------------------------------
+html 구조를 변경하는 예시 (형제 요소를 자식요소로..)
+	ㄴ 예시 1 (html의 구조를 변경 ex)형제 -> 자식)
+		var actor = $('#actor');
+		var tae = $('#tae');
+		var su = $('#su');
+		var bin = $('#bin');
+		actor.append(tae);
+		actor.append(su);
+		actor.append(bin);
+		//bin.appendTo(actor); //자식을 부모에게 붙이는 방식
+	ㄴ 예시 2(html 구조 추가하는 방법1)
+		actor.append('<div>한배우</div>');
+	ㄴ 예시 3(html 구조 추가하는 방법2)
+		var n = $('<div/>'); // <div/> -> <div> </div> 축약형
+		n.text('두배우');// <div>와</div>사이에 '두배우'값을 넣음
+		actor.append(n);
+--------------------------------------------------------------------------------
+이벤트 리스너를 각각 걸어주는 방식
+	ㄴ 	$('.data').each(function(){	//data 클래스를 가진 요소들에 각각 이벤트리스너를 걸어줌
+			$('.this').on('click', function(){
+				console.log( $(this).text() );
+			});	
+		});
+--------------------------------------------------------------------------------
+this <-> $(this)
+	ㄴ this - Javascript : 이벤트가 발생한 태그
+		ㄴ 'this' is the DOM object
+		ㄴ When using this, you can call DOM methods on it, but not JQuery methods.
+	ㄴ $(this) - Jquery : 이벤트가 발생한 오브젝트
+		ㄴ '$(this)' is the JQuery wrapper
+		ㄴ When using this, you can call JQuery methods on it, but not DOM methods.
+--------------------------------------------------------------------------------
+mouseenter / mouseleave <-> mouseover / mouseout
+	ㄴ mouseEnter/Leave : 지정된 태그 요소의 영역에만 해당되며, 만약 자식요소가 있다면 해당 자식요소의 영역은 제외됨
+	ㄴ mouseOver/Out : 지정된 태그 요소는 물론이며 자식 요소가 있다면 해당 자식요소의 영역까지 포함됨
+--------------------------------------------------------------------------------
+eq() 와 nth-child() 차이
+	ㄴ eq(n) : n번째로 일치하는 엘리먼트
+		ㄴ Select the element at index n within the matched set.
+	ㄴ nth-child() : n번째 엘리먼트들?
+		ㄴ Selects all elements that are the nth-child of their parent.
+
+	ㄴ references : https://stackoverflow.com/questions/7039966/jquery-difference-between-eq-and-nth-child
+--------------------------------------------------------------------------------
+find() 와 filter()의 차이
+	ㄴ find() : 선택된 요소의 자식노드에서 인자의 요소를 찾는다.
+		ㄴ search in the children elements (traversal filtering)
+	ㄴ filter() : 선택된 요소를 포함한 노드에서 인자의 요소를 찾는다.
+		ㄴ search in selected element set (collection filtering)
+	ㄴ 예시
+		ㄴ html 
+			<div id=fruits>
+				<div id=apple>apple</div>
+				<div id=kiwi>kiwi</div>
+				<div id=pineapple>pineapple</div>
+			</div>
+		ㄴ script1
+			$("#fruits").find("[id=apple]")
+		ㄴ script2
+			$("#fruits div").filter(function () { return this.id == "kiwi";})
+--------------------------------------------------------------------------------
+요소에 마우스가 올라가면 클래스를 적용하고 마우스가 내려가면 클래스를 제거하는 방법
+	ㄴ 사용방법 
+		ㄴ	$('').hover(function(){}, function(){}); // 첫번쨰 인자 : 마우스가 올라갔을 떄, 두번째 인자 : 마우스가 내려갔을 떄
+	ㄴ 사용예시
+		ㄴ	$('li').hover(function(){
+				$(this).addClass('border'); //이벤트가 발생한 애들에 한해서만 border클래스 추가
+			}, function(){
+				$(this).removeClass('border');
+			});

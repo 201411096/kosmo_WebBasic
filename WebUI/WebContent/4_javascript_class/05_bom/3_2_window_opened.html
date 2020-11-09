@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 새로 열려진 창 </title>
+<script type="text/javascript">
+	<!--
+		window.onload=function(){
+			var site = document.frm.site;
+			for(var i=0; i<site.length; i++){
+				site[i].onclick = function(){
+					switch(this.value){
+						//***********************opener
+						case '0': opener.location.href='http://www.daum.net'; break;
+						case '1': opener.location.href='http://www.naver.com'; break;
+						case '2': opener.location.href='http://www.nate.com'; break;
+					}
+				}
+			}
+
+/* 아직 못 고침		document.frm.onchange=function(){
+				console.log(document.frm.value);
+			}*/
+		}
+/*		아직 못 고침
+		function changeNumberToSite(num){
+			switch(num)
+				case '0': return "http://www.daum.net";
+						  break;
+				case '1': return "http://www.naver.com";
+						  break;
+				case '2': return "http://www.nate.com";
+						  break;
+
+		}	*/
+	//-->
+</script>
+</head>
+<body>
+	<form name="frm">
+		<input type="radio" name="site" value='0'> 다음 <br>
+		<input type="radio" name="site" value='1' > 네이버 <br>
+		<input type="radio" name="site" value='2'> 네이트 <br>
+	</form>
+</body>
+</html>

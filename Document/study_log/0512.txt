@@ -1,0 +1,16 @@
+0512_화요일
+
+1. JSP 기본문법
+		ㄴ errorPage 지정
+		ㄴ 웹의 파일형식 (mime type = content type)
+		ㄴ 디렉티브(설정)
+			ㄴ page
+			ㄴ taglib
+			ㄴ include
+2. 폼(*****)
+	ㄴ 사용자 입력값 받아서 디비에 저장
+
+3. 요청(request) / 응답(response)
+
+4. singleton pattern 복습					  
+		

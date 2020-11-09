@@ -1,0 +1,24 @@
+﻿0518_월요일
+
+1. web project lib 추가 : WEB-INF>lib 아래에 추가
+
+[참고] DB 연결
+	ㄴ 1. JDBC
+	ㄴ 2. Mybatis(ibatis) + Spring
+	ㄴ 3. JPA + SpringBoot -> 수업을 하지 않음
+
+----------------------------------------
+[이번주 제출]
+ㄴ 1. 주제 정하기 ex)쇼핑몰
+ㄴ 2. Lean Canvas + 벤치마킹 보고서(pdf 제출)
+ㄴ 3. 사용자 요구사항
+ㄴ 4. usecase (tool : startuml)
+ㄴ 5. 화면설계서 + 화면 부트스트랩 찾기
+ㄴ 6. DB 설계서
+ㄴ 7. 간트차트(일정관리) : 버전관리
+ㄴ 8. 깃연동(github만도 가능)
+	ㄴ https://victorydntmd.tistory.com/91
+
+[미션]
+1. 팀 깃(깃허브) 연동
+2. 로그파일 남기기(sample 있을 수 있음)

@@ -1,0 +1,7 @@
+﻿0519_화요일
+
+* MVC 패턴
+	ㄴ Model View Control
+	ㄴ Model1 방식 (view - model)
+	ㄴ Model2 방식 (controller, 보안차이)
+	

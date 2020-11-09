@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> 상대배치 </title>
+	<style type="text/css">
+		div{
+			height: 150px;
+			width: 100px;
+			border: 1px solid lightgray;
+			text-align: center;
+			color: white;
+			background: blue;
+			display: inline-block;
+		}
+		div:nth-of-type(odd):hover{
+			position: relative;
+			background: black;
+			bottom: 20px;
+		}
+		div:nth-of-type(even):hover{
+			position: relative; /* 현재 위치를 기준으로 위치 지정  */
+			background: orange;
+			left: 20px;
+			top: 20px;
+		}
+		
+	</style>
+</head>
+<body>
+	<h3> 나의 취미 </h3>
+	<hr>
+	<div>소풍</div>
+	<div>나들이</div>
+	<div>책보기</div>
+	<div>멍때리기</div>
+	<div>맛집탐방</div>
+</body>
+</html>

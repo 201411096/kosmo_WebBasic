@@ -1,0 +1,11 @@
+﻿0514_목요일
+
+1. JavaBean actionTag
+
+	(1) include
+		ㄴ 정적인 include : <%@ include file='a.jsp' %>
+		ㄴ 동적인 include : <jsp:include page='a.jsp' />
+	(2) 페이지 이동
+		ㄴ <% response.sendRedirect("b.jsp"); %>
+		ㄴ <jsp:forward page = 'b.jsp' />
+2. 방명록

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="CommentMapper">
+<!-- ***** sql문 작성시에 ';'사용 주의 *****  -->
+
+<!-- 	<select id="selectComment" resultType="mybatis.guest.model.Comment"> -->
+<!-- SELECT comment_no commentNo, -->
+<!-- 		user_id userId, -->
+<!-- 		comment_content commentContent, -->
+<!-- 		reg_date regDate -->
+<!-- FROM comment_tab -->
+<!-- 	</select> -->
+
+<!-- 	<select id="selectComment" resultType="mybatis.guest.model.Comment"> -->
+	<select id="selectComment" resultType="comment">
+		SELECT * FROM comment_tab
+	</select>
+	<insert id="insertComment" parameterType="comment"> <!-- mybatis에서 설정해둔 별칭 사용  -->
+		INSERT INTO comment_tab(comment_no, user_id, comment_content, reg_date)
+		VALUES(seq_comment.nextval,#{userId},#{commentContent},sysdate)
+	</insert>
+<!-- 	개인적으로 한 방법 -->
+<!-- 	<select id="selectCommentByPrimaryKey" parameterType="Long" resultType="comment"> -->
+<!-- 		SELECT * FROM comment_tab WHERE comment_no=#{commentNo} -->
+<!-- 	</select> -->
+<!-- 수업시간에 사용한 방법 -->
+	<select id="selectCommentByPrimaryKey" parameterType="hashmap" resultType="comment">
+		SELECT * FROM comment_tab
+		<where>
+			<if test='commentNo != null'>
+				comment_no=#{commentNo}
+			</if>
+		</where>
+	</select>
+	
+	<delete id="deleteComment" parameterType="hashmap">
+		DELETE FROM comment_tab WHERE comment_no=#{commentNo}
+	</delete>
+	<update id="updateComment" parameterType="comment">
+		UPDATE comment_tab SET user_id=#{userId} , comment_content=#{commentContent} WHERE comment_no=#{commentNo}
+	</update>
+</mapper>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 이벤트 리스너 연결 </title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var btn = document.getElementById('btn');
+            btn.addEventListener('click', function(){   /* click 이벤트 발생시 해당함수 실행 */
+                alert('이벤트');
+            });
+            
+        }
+    </script>
+ </head>
+ <body>
+	<input type='button' value='눌러'  id='btn' />
+ </body>
+</html>
