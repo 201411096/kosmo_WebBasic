@@ -15,6 +15,7 @@ git pull
 git checkout - 현재 branch 확인
 git checkout branch_name - 그 branch로 변경
 git branch - 현재 branch 종류 확인
+git checkout -t origin/remote-branch-name - "remote-branch-name"에 해당하는 원격 branch를 로컬로 가져옴
 --------------------------------------------------------------------------------
 git branch branch_name - branch 생성
 git push -u origin branch_name - 해당 branch 원격 저장소에 올림
